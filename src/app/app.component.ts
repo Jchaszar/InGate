@@ -7,6 +7,7 @@ import {firebaseConfig} from './firebaseCredentials';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,7 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
@@ -31,6 +32,15 @@ export class MyApp {
 
   initializeApp() {
     firebase.initializeApp(firebaseConfig);
+    const unsubscribe = firebase.auth().onAuthStateChanged( user => {
+      if (!user){
+        this.rootPage = LoginPage;
+        unsubscribe();
+      } else {
+        this.rootPage = HomePage;
+        unsubscribe();
+      }
+    });
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
