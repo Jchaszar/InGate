@@ -3,7 +3,8 @@ import { IonicPage,
   NavController, 
   Loading,
   LoadingController,
-  AlertController } from 'ionic-angular';
+  AlertController,
+  MenuController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
@@ -25,7 +26,8 @@ export class SignupPage {
     public authProvider: AuthProvider,
     public formBuilder: FormBuilder, 
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController)
+    public alertCtrl: AlertController,
+    private menuCtrl: MenuController)
      {
      	this.organizerRef = firebase.database().ref('Organizers/');
      	this.riderRef = firebase.database().ref('Riders/');
@@ -38,7 +40,12 @@ export class SignupPage {
         userType:['']
       });	
   }
-
+  ionViewWillEnter(){
+  	this.menuCtrl.swipeEnable(false);
+  }
+  ionViewWillLeave(){
+  	this.menuCtrl.swipeEnable(true);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignUpPage');
   }
