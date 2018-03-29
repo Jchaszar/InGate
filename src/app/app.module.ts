@@ -14,6 +14,7 @@ import { AuthProvider } from '../providers/auth/auth';
 
 import { LoginPageModule } from '../pages/login/login.module';
 import { SignupPageModule } from '../pages/signup/signup.module';
+import { OrganizerhomePageModule } from '../pages/organizerhome/organizerhome.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SignupPageModule } from '../pages/signup/signup.module';
     BrowserModule,
     SignupPageModule,
     LoginPageModule,
+    OrganizerhomePageModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

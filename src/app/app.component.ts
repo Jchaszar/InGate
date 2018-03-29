@@ -8,6 +8,7 @@ import {firebaseConfig} from './firebaseCredentials';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
+import { OrganizerhomePage } from '../pages/organizerhome/organizerhome'; 
 
 @Component({
   templateUrl: 'app.html'
@@ -32,15 +33,30 @@ export class MyApp {
 
   initializeApp() {
     firebase.initializeApp(firebaseConfig);
-    const unsubscribe = firebase.auth().onAuthStateChanged( user => {
+      const unsubscribe = firebase.auth().onAuthStateChanged( user => {
+      var riderRef = firebase.database().ref('Riders/' + user.uid);
+      var organizerRef = firebase.database().ref('Organizers/' + user.uid);
       if (!user){
         this.rootPage = LoginPage;
         unsubscribe();
-      } else {
-        this.rootPage = HomePage;
-        unsubscribe();
       }
+      riderRef.on('value', (snap) => {
+        if(snap.val() != null){
+          this.rootPage = HomePage;
+          unsubscribe();
+        }
+      });
+      organizerRef.on('value', (snap) => {
+        if(snap.val() != null){
+          this.rootPage = OrganizerhomePage;
+          unsubscribe();
+        }
+      })
     });
+    
+
+  
+
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

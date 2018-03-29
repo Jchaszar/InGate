@@ -10,9 +10,14 @@ export class AuthProvider {
   loginUser(email: string, password: string): Promise<any> {
   	return firebase.auth().signInWithEmailAndPassword(email,password);
   }
-  signupUser(email: string, password: string): Promise<any>{
+  signupRider(email: string, password: string): Promise<any>{
   	return firebase.auth().createUserWithEmailAndPassword(email,password).then( newUser => {
-  		firebase.database().ref('/userProfile').child(newUser.uid).set({ email: email});
+  		firebase.database().ref('/Riders').child(newUser.uid).set({ email: email});
+  	});
+  }
+  signupOrganizer(email: string, password: string): Promise<any>{
+  	return firebase.auth().createUserWithEmailAndPassword(email,password).then( newUser => {
+  		firebase.database().ref('/Organizers').child(newUser.uid).set({ email: email});
   	});
   }
   resetPassword(email: string): Promise<void>{

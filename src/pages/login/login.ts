@@ -9,6 +9,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
+import { OrganizerhomePage } from '../organizerhome/organizerhome';
+import firebase from 'firebase';
 
 
 @IonicPage()
@@ -41,10 +43,26 @@ export class LoginPage {
   	} else {
   		this.authProvider.loginUser(this.loginForm.value.email, this.loginForm.value.password)
   		.then(authData => {
-  			this.loading.dismiss().then(() =>{
-  				this.navCtrl.setRoot(HomePage);
+  			var user = firebase.auth().currentUser.uid;
+  			var riderRef = firebase.database().ref('Riders/' + user);
+  			var organizerRef = firebase.database().ref('Organizers/' + user);
+  			//checks for rider snapshot, if true navigates to riderHome page
+  			riderRef.on('value', (snap) => {
+  				if(snap.val() != null){
+  				this.loading.dismiss().then(() => {
+  					this.navCtrl.setRoot(HomePage);
+  				})
+  			}
   			});
-
+  			//checks for organizer snapshot, if true navigates to organizerhomepage
+  			organizerRef.on('value', (snap) => {
+  				if(snap.val() != null){
+  				this.loading.dismiss().then(() => {
+  					this.navCtrl.setRoot(OrganizerhomePage);
+  				})
+  			}
+  			});
+  			
   		}, error => {
   			this.loading.dismiss().then(() => {
   				let alert = this.alertCtrl.create({

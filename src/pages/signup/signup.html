@@ -24,7 +24,13 @@
         [class.invalid]="!signupForm.controls.password.valid && blur">
       </ion-input>
     </ion-item>
-
+    <ion-item>
+    	<ion-label>User Type</ion-label>
+    	<ion-select formControlName="userType">
+    		<ion-option value="rider">Rider</ion-option>
+   		    <ion-option value="organizer">Event Organizer</ion-option>
+ 	 	</ion-select>
+	</ion-item>
     <button ion-button block type="submit" [disabled]="!signupForm.valid">
       Create an Account
     </button>
