@@ -33,7 +33,6 @@ export class HomePage {
 		this.navCtrl.setRoot("LoginPage");
 	});
   }
-
   private generateTempClasses(){
   	//Replace with relevant code
   	this.event = JSON.parse('{"Event":{"ID":"13rfs91","School":[[1522368175341,"Grand Prix Ring",[{"ID":"h4s9101s","IDref":585,"Title":"Baby Green Jumper II 2c","Description":"This is a test description","Rider":["adsfai","dkajfasd","jakdlf"],"ESTDelay":4000},{"ID":"h4s9101s","IDref":585,"Title":"Baby Green Jumper II 2c","Description":"This is a test description","Rider":["adsfai","dkajfasd"],"ESTDelay":4000},{"ID":"h4s9101s","IDref":585,"Title":"Baby Green Jumper II 2c","Description":"This is a test description","Rider":["adsfai","dkajfasd","jakdlf"],"ESTDelay":4000}]],[1522369008150,"Ring II",[{"ID":"asdfkl1","IDref":1107,"Title":"Showplace Warm Up Class O/F","Description":"This is a test description school 2","Rider":["dkajfasd","jakdlf"],"ESTDelay":4000},{"ID":"adfkj1d","IDref":100,"Title":"Low/USHJA 3\'0 Hunter O/F","Description":"This is a test description shcool 2","Rider":["adsfai","dkajfasd"],"ESTDelay":4000},{"ID":"adfwesx","IDref":120,"Title":"Non Thoroughbred Hunter O/F","Description":"This is a test description school 2","Rider":["dkajfasd","jakdlf"],"ESTDelay":4000}]]]}}');
@@ -46,5 +45,4 @@ export class HomePage {
 
  	}*/
   }
-
 }

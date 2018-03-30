@@ -3,11 +3,13 @@ import { IonicPage,
   NavController, 
   Loading,
   LoadingController,
-  AlertController } from 'ionic-angular';
+  AlertController,
+  MenuController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
 import { HomePage } from '../home/home';
+import  firebase from 'firebase'; 
 
 
 @IonicPage()
@@ -18,29 +20,41 @@ import { HomePage } from '../home/home';
 export class SignupPage {
 	public signupForm: FormGroup;
 	public loading: Loading;
-
+	organizerRef;
+	riderRef;
   constructor(public navCtrl: NavController, 
     public authProvider: AuthProvider,
     public formBuilder: FormBuilder, 
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController)
+    public alertCtrl: AlertController,
+    private menuCtrl: MenuController)
      {
+     	this.organizerRef = firebase.database().ref('Organizers/');
+     	this.riderRef = firebase.database().ref('Riders/');
+
       this.signupForm = formBuilder.group({
         email: ['', 
           Validators.compose([Validators.required, EmailValidator.isValid])],
         password: ['', 
-          Validators.compose([Validators.minLength(6), Validators.required])]
+          Validators.compose([Validators.minLength(6), Validators.required])],
+        userType:['']
       });	
   }
-
+  ionViewWillEnter(){
+  	this.menuCtrl.swipeEnable(false);
+  }
+  ionViewWillLeave(){
+  	this.menuCtrl.swipeEnable(true);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignUpPage');
   }
   signupUser(){
   	if (!this.signupForm.valid){
     console.log(this.signupForm.value);
-  } else {
-    this.authProvider.signupUser(this.signupForm.value.email, 
+    //sign up for riders
+  } else if(this.signupForm.value.userType == "rider") {
+    this.authProvider.signupRider(this.signupForm.value.email, 
       this.signupForm.value.password)
     .then(() => {
       this.loading.dismiss().then( () => {
@@ -63,6 +77,32 @@ export class SignupPage {
     this.loading = this.loadingCtrl.create();
     this.loading.present();
   }
+  //sign up for organizer
+  else if(this.signupForm.value.userType == "organizer") {
+    this.authProvider.signupOrganizer(this.signupForm.value.email, 
+      this.signupForm.value.password)
+    .then(() => {
+      this.loading.dismiss().then( () => {
+        this.navCtrl.setRoot('OrganizerhomePage');
+      });
+    }, (error) => {
+      this.loading.dismiss().then( () => {
+        let alert = this.alertCtrl.create({
+          message: error.message,
+          buttons: [
+            {
+              text: "Ok",
+              role: 'cancel'
+            }
+          ]
+        });
+        alert.present();
+      });
+    });
+    this.loading = this.loadingCtrl.create();
+    this.loading.present();
+  }
+
 }
 
 }

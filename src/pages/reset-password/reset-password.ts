@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, MenuController } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
+
 
 
 @IonicPage()
@@ -16,10 +17,17 @@ export class ResetPasswordPage {
   constructor(public navCtrl: NavController, 
     public authProvider: AuthProvider,
     public formBuilder: FormBuilder, 
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    private menuCtrl: MenuController) {
   	this.resetPasswordForm = formBuilder.group({
         email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
       });
+  }
+  ionViewWillEnter(){
+  	this.menuCtrl.swipeEnable(false);
+  }
+  ionViewWillLeave(){
+  	this.menuCtrl.swipeEnable(true);
   }
 
   ionViewDidLoad() {
