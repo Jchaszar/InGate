@@ -39,7 +39,7 @@ export class HomePage {
  	//^^ Pretend that this loaded from firebase
  	//User to cross reference
  	let userID = "jakdlf";
- 	let schools = this.event.School;
+ 	//let schools = this.event.School;
  	console.log(this.event);
 /* 	for(let i = 0; i < schools.length; i++){
 

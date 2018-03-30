@@ -4,7 +4,8 @@ import { IonicPage,
   Loading,
   LoadingController,
   AlertController,
-  MenuController } from 'ionic-angular';
+  MenuController,
+  Events } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
@@ -27,7 +28,8 @@ export class SignupPage {
     public formBuilder: FormBuilder, 
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    private menuCtrl: MenuController)
+    private menuCtrl: MenuController,
+    public events: Events)
      {
      	this.organizerRef = firebase.database().ref('Organizers/');
      	this.riderRef = firebase.database().ref('Riders/');
@@ -37,7 +39,7 @@ export class SignupPage {
           Validators.compose([Validators.required, EmailValidator.isValid])],
         password: ['', 
           Validators.compose([Validators.minLength(6), Validators.required])],
-        userType:['']
+        userType:['rider']
       });	
   }
   ionViewWillEnter(){
@@ -58,6 +60,7 @@ export class SignupPage {
       this.signupForm.value.password)
     .then(() => {
       this.loading.dismiss().then( () => {
+      	this.events.publish('rider login');
         this.navCtrl.setRoot(HomePage);
       });
     }, (error) => {
@@ -83,6 +86,7 @@ export class SignupPage {
       this.signupForm.value.password)
     .then(() => {
       this.loading.dismiss().then( () => {
+      	this.events.publish('organizer login');
         this.navCtrl.setRoot('OrganizerhomePage');
       });
     }, (error) => {

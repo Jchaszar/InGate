@@ -26,8 +26,8 @@
     </ion-item>
     <ion-item>
     	<ion-label>User Type</ion-label>
-    	<ion-select formControlName="userType">
-    		<ion-option value="rider">Rider</ion-option>
+    	<ion-select formControlName="userType" [class.invalid]="!signupForm.controls.userType.valid && blur">
+    		<ion-option value="rider" selected="true">Rider</ion-option>
    		    <ion-option value="organizer">Event Organizer</ion-option>
  	 	</ion-select>
 	</ion-item>

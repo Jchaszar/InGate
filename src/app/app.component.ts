@@ -23,10 +23,10 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public events: Events) {
     
-   this.pages = [
+   /*this.pages = [
     { title: 'Default', component : HomePage},
          { title: 'DefaultList' , component: ListPage} 
-         ];
+         ];*/
     this.initializeApp();
 
     this.events.subscribe('rider login',() =>  {
@@ -48,13 +48,13 @@ export class MyApp {
   initializeApp() {
     firebase.initializeApp(firebaseConfig);
       const unsubscribe = firebase.auth().onAuthStateChanged( user => {
-        this.user = user.uid;
-      var riderRef = firebase.database().ref('Riders/' + user.uid);
-      var organizerRef = firebase.database().ref('Organizers/' + user.uid);
       if (!user){
         this.rootPage = LoginPage;
         unsubscribe();
       }
+      this.user = user.uid;
+      var riderRef = firebase.database().ref('Riders/' + user.uid);
+      var organizerRef = firebase.database().ref('Organizers/' + user.uid);
       riderRef.on('value', (snap) => {
         if(snap.val() != null){
           this.rootPage = HomePage;
