@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
@@ -21,13 +21,27 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public events: Events) {
     
    this.pages = [
     { title: 'Default', component : HomePage},
          { title: 'DefaultList' , component: ListPage} 
          ];
     this.initializeApp();
+    this.events.subscribe('rider login',() =>  {
+      var riderRef = firebase.database().ref('Riders/' + firebase.auth().currentUser.uid);
+      this.rootPage = HomePage;
+      this.pages = [
+      { title: 'My Events', component: HomePage},
+      { title: 'List', component: ListPage}]
+    });
+    this.events.subscribe('organizer login',() =>  {
+      var organizerRef = firebase.database().ref('Organizers/' + firebase.auth().currentUser.uid);
+      this.rootPage = OrganizerhomePage;
+      this.pages = [
+      { title: 'Organizer Home', component: OrganizerhomePage},
+      { title: 'List', component: ListPage}]
+    });
   }
 
   initializeApp() {

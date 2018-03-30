@@ -5,7 +5,8 @@ import {
   LoadingController, 
   NavController,
   AlertController,
-  MenuController } from 'ionic-angular';
+  MenuController,
+  Events } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
@@ -28,7 +29,8 @@ export class LoginPage {
   public alertCtrl: AlertController, 
   public authProvider: AuthProvider, 
   public formBuilder: FormBuilder,
-  private menuCtrl: MenuController) {
+  private menuCtrl: MenuController,
+  public events: Events) {
   	this.loginForm = formBuilder.group({
   		email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
   		password:['', Validators.compose([Validators.minLength(6), Validators.required])]
@@ -58,6 +60,7 @@ export class LoginPage {
   			riderRef.on('value', (snap) => {
   				if(snap.val() != null){
   				this.loading.dismiss().then(() => {
+  					this.events.publish('rider login');
   					this.navCtrl.setRoot(HomePage);
   				})
   			}
@@ -66,6 +69,7 @@ export class LoginPage {
   			organizerRef.on('value', (snap) => {
   				if(snap.val() != null){
   				this.loading.dismiss().then(() => {
+  					this.events.publish('organizer login');
   					this.navCtrl.setRoot(OrganizerhomePage);
   				})
   			}
