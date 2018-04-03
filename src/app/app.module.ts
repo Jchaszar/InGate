@@ -15,6 +15,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { LoginPageModule } from '../pages/login/login.module';
 import { SignupPageModule } from '../pages/signup/signup.module';
 import { OrganizerhomePageModule } from '../pages/organizerhome/organizerhome.module';
+import { CreateEventPageModule } from '../pages/create-event/create-event.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { OrganizerhomePageModule } from '../pages/organizerhome/organizerhome.mo
     BrowserModule,
     SignupPageModule,
     LoginPageModule,
+    CreateEventPageModule,
     OrganizerhomePageModule,
     IonicModule.forRoot(MyApp),
   ],

@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { OrganizerhomePage } from '../pages/organizerhome/organizerhome'; 
+import { CreateEventPage } from '../pages/create-event/create-event';
 
 @Component({
   templateUrl: 'app.html'
@@ -41,6 +42,7 @@ export class MyApp {
       this.rootPage = OrganizerhomePage;
       this.pages = [
       { title: 'Organizer Home', component: OrganizerhomePage},
+      { title: 'Create New Event' , component: CreateEventPage} ,
       { title: 'List', component: ListPage}]
     });
   }
@@ -69,6 +71,7 @@ export class MyApp {
         if(snap.val() != null){
           this.pages = [
          { title: 'Organizer Home', component : OrganizerhomePage},
+         { title: 'Create New Event' , component: CreateEventPage} ,
          { title: 'List' , component: ListPage} 
          ];
           this.rootPage = OrganizerhomePage;

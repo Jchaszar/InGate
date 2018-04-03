@@ -1,8 +1,11 @@
 
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Organizer Home Page</ion-title>
+  <ion-navbar color="primary">
+  	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Organizer Home</ion-title>
     <ion-buttons end>
 		<button ion-button (click)="logOut()">
 		<label> Log Out &nbsp;</label>
@@ -15,5 +18,19 @@
 
 
 <ion-content padding>
-
+	<ion-list>
+		<ion-item *ngFor="let event of eventArr">
+			<ion-card>
+				<ion-card-content>
+				<ion-card-title>
+					{{event.eventName}}
+				</ion-card-title>
+				<p>Location: &nbsp;</p>
+				{{event.eventLocation}}
+				<p>Date: &nbsp;</p>
+				{{event.eventDate}}
+			</ion-card-content>
+			</ion-card>
+		</ion-item>
+	</ion-list>
 </ion-content>

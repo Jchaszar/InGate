@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+  	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CreateEvent</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+		<form [formGroup] ="CreateEventForm"
+	 (submit)="createEvent()" novalidate>
+		<ion-item>
+			<ion-label stacked>Event Name</ion-label>
+			<ion-input formControlName = "eventName" type="text" placeholder ="Enter Event Name"  
+			[class.invalid]="!CreateEventForm.controls.eventName.valid && blur">
+			</ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label stacked>Event Location</ion-label>
+			<ion-input formControlName = "eventLocation" type="text" placeholder ="Enter Event Location"  
+			[class.invalid]="!CreateEventForm.controls.eventLocation.valid && blur">
+			</ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label stacked>Event Date</ion-label>
+			<ion-input formControlName = "eventDate" type="date" placeholder ="Enter Event Date"  
+			[class.invalid]="!CreateEventForm.controls.eventDate.valid && blur">
+			</ion-input>
+		</ion-item>
+		<button ion-button block type="submit" color="default" [disabled]="!CreateEventForm.valid">
+		Create Event
+		</button>
+	</form>
+	</ion-list>
+</ion-content>
