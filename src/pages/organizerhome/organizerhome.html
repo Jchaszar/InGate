@@ -5,7 +5,8 @@
   	<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Organizer Home</ion-title>
+    <ion-title>Manage Events</ion-title>
+
     <ion-buttons end>
 		<button ion-button (click)="logOut()">
 		<label> Log Out &nbsp;</label>
@@ -20,7 +21,7 @@
 <ion-content padding>
 	<ion-list>
 		<ion-item *ngFor="let event of eventArr">
-			<ion-card>
+			<ion-card (click)="viewEvent(event)">
 				<ion-card-content>
 				<ion-card-title>
 					{{event.eventName}}

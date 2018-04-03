@@ -43,18 +43,6 @@ public loading: Loading;
   }
 
   ionViewWillEnter(){
-
-  	/*this.riderArr = [];
-    this.riderRef.on('value', (snap) => {
-      snap.forEach((child) => {
-        let newitem = {
-          id: child.key,
-          email: child.val().email,
-          fullName: child.val().fullName,
-        }
-        this.riderArr.push(newitem);
-      })
-    })*/
   }
 
   createEvent(){

@@ -41,7 +41,7 @@ export class MyApp {
       var organizerRef = firebase.database().ref('Organizers/' + firebase.auth().currentUser.uid);
       this.rootPage = OrganizerhomePage;
       this.pages = [
-      { title: 'Organizer Home', component: OrganizerhomePage},
+      { title: 'Manage Events', component: OrganizerhomePage},
       { title: 'Create New Event' , component: CreateEventPage} ,
       { title: 'List', component: ListPage}]
     });
@@ -70,7 +70,7 @@ export class MyApp {
       organizerRef.on('value', (snap) => {
         if(snap.val() != null){
           this.pages = [
-         { title: 'Organizer Home', component : OrganizerhomePage},
+         { title: 'Manage Events', component : OrganizerhomePage},
          { title: 'Create New Event' , component: CreateEventPage} ,
          { title: 'List' , component: ListPage} 
          ];

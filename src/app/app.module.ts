@@ -7,15 +7,18 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { EventInfoPage} from '../pages/event-info/event-info';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 
+//page modules
 import { LoginPageModule } from '../pages/login/login.module';
 import { SignupPageModule } from '../pages/signup/signup.module';
 import { OrganizerhomePageModule } from '../pages/organizerhome/organizerhome.module';
 import { CreateEventPageModule } from '../pages/create-event/create-event.module';
+import { EventInfoPageModule } from '../pages/event-info/event-info.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { CreateEventPageModule } from '../pages/create-event/create-event.module
     SignupPageModule,
     LoginPageModule,
     CreateEventPageModule,
+    EventInfoPageModule,
     OrganizerhomePageModule,
     IonicModule.forRoot(MyApp),
   ],
@@ -35,6 +39,7 @@ import { CreateEventPageModule } from '../pages/create-event/create-event.module
   entryComponents: [
     MyApp,
     LoginPage,
+    EventInfoPage,
     SignupPage,
     HomePage,
     ListPage,

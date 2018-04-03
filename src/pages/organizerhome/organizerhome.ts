@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import firebase from 'firebase';
 
+import { EventInfoPage } from '../event-info/event-info';
+
 @IonicPage()
 @Component({
   selector: 'page-organizerhome',
@@ -39,5 +41,10 @@ export class OrganizerhomePage {
   	this.authProvider.logoutUser().then(() => {
 		this.navCtrl.setRoot("LoginPage");
 	});
+  }
+  viewEvent(event){
+  	this.navCtrl.setRoot(EventInfoPage, {
+      event: event
+    });
   }
 }
