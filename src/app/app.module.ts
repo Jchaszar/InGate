@@ -8,7 +8,9 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { EventInfoPage} from '../pages/event-info/event-info';
+import { ClassModalPage } from '../pages/class-modal/class-modal';
 import { DivisionModalPage } from '../pages/division-modal/division-modal';
+import { DivisionInfoPage } from '../pages/division-info/division-info';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,6 +23,8 @@ import { OrganizerhomePageModule } from '../pages/organizerhome/organizerhome.mo
 import { CreateEventPageModule } from '../pages/create-event/create-event.module';
 import { EventInfoPageModule } from '../pages/event-info/event-info.module';
 import { DivisionModalPageModule } from '../pages/division-modal/division-modal.module';
+import { DivisionInfoPageModule } from '../pages/division-info/division-info.module';
+import { ClassModalPageModule } from '../pages/class-modal/class-modal.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,9 @@ import { DivisionModalPageModule } from '../pages/division-modal/division-modal.
     BrowserModule,
     SignupPageModule,
     LoginPageModule,
+    ClassModalPageModule,
     DivisionModalPageModule,
+    DivisionInfoPageModule,
     CreateEventPageModule,
     EventInfoPageModule,
     OrganizerhomePageModule,
@@ -42,7 +48,9 @@ import { DivisionModalPageModule } from '../pages/division-modal/division-modal.
   entryComponents: [
     MyApp,
     LoginPage,
+    ClassModalPage,
     DivisionModalPage,
+    DivisionInfoPage,
     EventInfoPage,
     SignupPage,
     HomePage,

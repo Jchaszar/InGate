@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, NavParams } from 'ionic-angular';
 import firebase from 'firebase';
 
+import { DivisionInfoPage } from '../division-info/division-info';
+
 @IonicPage()
 @Component({
   selector: 'page-event-info',
@@ -20,6 +22,12 @@ divisions = [];
     this.eventID = this.navParams.get('event').id;
     this.eventLocation = this.navParams.get('event').eventLocation;
     this.eventRef = firebase.database().ref('Events/' + this.eventID);
+  }
+
+  viewDivision(division){
+    this.navCtrl.setRoot(DivisionInfoPage, {
+      division: division
+    });
   }
 
   createDivision(){
@@ -41,10 +49,12 @@ divisions = [];
         }
         else{
         let newitem = {
+          parentid: snap.key,
           id: child.key,
           divisionName: child.val().divisionName,
           divisionType: child.val().divisionType,
         }
+        console.log(newitem.parentid);
         this.divisions.push(newitem);
       }
       })
@@ -69,15 +79,16 @@ divisions = [];
         }
         else{
         let newitem = {
+          parentid: snap.key,
           id: child.key,
           divisionName: child.val().divisionName,
           divisionType: child.val().divisionType,
         }
+        console.log(newitem.parentid);
         this.divisions.push(newitem);
       }
       })
   })
-    console.log(this.divisions);
   }
 
 }

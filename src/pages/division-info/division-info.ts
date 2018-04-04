@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ModalController, NavParams } from 'ionic-angular';
+import firebase from 'firebase';
 
-/**
- * Generated class for the DivisionInfoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ClassModalPage } from '../class-modal/class-modal';
 
 @IonicPage()
 @Component({
@@ -14,12 +10,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'division-info.html',
 })
 export class DivisionInfoPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+divisionName;
+divisionType;
+divisionID;
+divisionParentID;
+divisionRef;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  	this.divisionName = this.navParams.get('division').divisionName;
+    this.divisionType = this.navParams.get('division').divisionType;
+    this.divisionID = this.navParams.get('division').id;
+    this.divisionParentID = this.navParams.get('division').parentid;
+    console.log(this.divisionParentID);
+    console.log(this.divisionID);
+    this.divisionRef = firebase.database().ref('Events/' + this.divisionParentID + this.divisionID);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DivisionInfoPage');
+  }
+  addClass(){
+  	let modal = this.modalCtrl.create(ClassModalPage);
+  	modal.present();
   }
 
 }

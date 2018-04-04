@@ -13,7 +13,7 @@
 
 <ion-content padding>
 	<ion-list>
-		<ion-item *ngFor="let division of divisions">
+		<ion-item *ngFor="let division of divisions" (click)="viewDivision(division)">
 			<ion-card>
 				<ion-card-content>
 					<ion-card-title>
