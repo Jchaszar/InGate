@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
 import {firebaseConfig} from './firebaseCredentials';
 
+import { AuthProvider } from '../providers/auth/auth';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
@@ -22,7 +23,8 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public events: Events) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
+   public events: Events, public authProvider: AuthProvider) {
     
    /*this.pages = [
     { title: 'Default', component : HomePage},
@@ -34,14 +36,16 @@ export class MyApp {
       var riderRef = firebase.database().ref('Riders/' + firebase.auth().currentUser.uid);
       this.rootPage = HomePage;
       this.pages = [
-      { title: 'My Events', component: HomePage}]
+      { title: 'My Events', component: HomePage},
+      { title: 'Log Out', component: null}]
     });
     this.events.subscribe('organizer login',() =>  {
       var organizerRef = firebase.database().ref('Organizers/' + firebase.auth().currentUser.uid);
       this.rootPage = OrganizerhomePage;
       this.pages = [
       { title: 'Manage Events', component: OrganizerhomePage},
-      { title: 'Create New Event' , component: CreateEventPage}]
+      { title: 'Create New Event' , component: CreateEventPage},
+      { title: 'Log Out', component: null}]
     });
   }
 
@@ -60,6 +64,8 @@ export class MyApp {
           this.rootPage = HomePage;
           this.pages = [
          { title: 'My Events', component : HomePage}, 
+         { title: 'Log Out', component: null}
+
          ];
           unsubscribe();
         }
@@ -68,7 +74,8 @@ export class MyApp {
         if(snap.val() != null){
           this.pages = [
          { title: 'Manage Events', component : OrganizerhomePage},
-         { title: 'Create New Event' , component: CreateEventPage}
+         { title: 'Create New Event' , component: CreateEventPage},
+         { title: 'Log Out', component: null}
          ];
           this.rootPage = OrganizerhomePage;
           unsubscribe();
@@ -90,6 +97,14 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
+    if(page.component){
     this.nav.setRoot(page.component);
+  }
+  //logout function
+  else{
+    this.authProvider.logoutUser().then(() => {
+    this.nav.setRoot("LoginPage");
+  });
+  }
   }
 }
