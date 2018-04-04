@@ -34,16 +34,14 @@ export class MyApp {
       var riderRef = firebase.database().ref('Riders/' + firebase.auth().currentUser.uid);
       this.rootPage = HomePage;
       this.pages = [
-      { title: 'My Events', component: HomePage},
-      { title: 'List', component: ListPage}]
+      { title: 'My Events', component: HomePage}]
     });
     this.events.subscribe('organizer login',() =>  {
       var organizerRef = firebase.database().ref('Organizers/' + firebase.auth().currentUser.uid);
       this.rootPage = OrganizerhomePage;
       this.pages = [
       { title: 'Manage Events', component: OrganizerhomePage},
-      { title: 'Create New Event' , component: CreateEventPage} ,
-      { title: 'List', component: ListPage}]
+      { title: 'Create New Event' , component: CreateEventPage}]
     });
   }
 
@@ -61,8 +59,7 @@ export class MyApp {
         if(snap.val() != null){
           this.rootPage = HomePage;
           this.pages = [
-         { title: 'My Events', component : HomePage},
-         { title: 'List' , component: ListPage} 
+         { title: 'My Events', component : HomePage}, 
          ];
           unsubscribe();
         }
@@ -71,8 +68,7 @@ export class MyApp {
         if(snap.val() != null){
           this.pages = [
          { title: 'Manage Events', component : OrganizerhomePage},
-         { title: 'Create New Event' , component: CreateEventPage} ,
-         { title: 'List' , component: ListPage} 
+         { title: 'Create New Event' , component: CreateEventPage}
          ];
           this.rootPage = OrganizerhomePage;
           unsubscribe();
