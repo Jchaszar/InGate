@@ -11,13 +11,13 @@ import { ClassModalPage } from '../class-modal/class-modal';
 })
 export class DivisionInfoPage {
 divisionName;
-divisionType;
+divisionStartTime;
 divisionID;
 divisionParentID;
 divisionRef;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   	this.divisionName = this.navParams.get('division').divisionName;
-    this.divisionType = this.navParams.get('division').divisionType;
+    this.divisionStartTime = this.navParams.get('division').divisionStartTime;
     this.divisionID = this.navParams.get('division').id;
     this.divisionParentID = this.navParams.get('division').parentid;
     console.log(this.divisionParentID);

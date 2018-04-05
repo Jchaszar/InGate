@@ -7,7 +7,7 @@
   	</button>
   </ion-buttons>
 
-    <ion-title>New Division</ion-title>
+    <ion-title>New School</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,17 +17,19 @@
 <ion-content padding>
 	<ion-list>
 	<ion-item>
-	<ion-input type="text" placeholder="Enter a name for the division" [(ngModel)]="division.Name">
+	<ion-input type="text" placeholder="Enter a name for the School" [(ngModel)]="division.Name">
 	</ion-input>
 	</ion-item>
 	<ion-item>
-	<ion-label>Division Type</ion-label>
-	<ion-select [(ngModel)]="division.Type">
-		<ion-option value="jumper" selected="true">Jumper</ion-option>
-		<ion-option value="hunter">Hunter</ion-option>
-		<ion-option value="equitation">Equitation</ion-option>
-	</ion-select>
+	<ion-label>School Start Time</ion-label>
+	<ion-datetime displayFormat="MMM DD, hh:mm A" [(ngModel)]="division.StartTime">
+	</ion-datetime>
+
 </ion-item>
+<ion-item>
+	<ion-input type="text" placeholder="Enter the ring for the school" [(ngModel)]=division.Ring>
+	</ion-input>
+	</ion-item>
 </ion-list>
 	<button ion-button full icon-left (click)="save()">
 		<ion-icon name="checkmark"></ion-icon> Add Division

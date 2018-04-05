@@ -8,9 +8,10 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class DivisionModalPage {
 	divisionName;
-	divisionType;
+	divisionStartTime;
+	divisionRing
 
-	division = {Name: '' , Type:''};
+	division = {Name: '' , StartTime:'', Ring: ''};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
@@ -23,7 +24,8 @@ export class DivisionModalPage {
   }
   save(){
   	console.log(this.division.Name);
-  	console.log(this.division.Type);
+  	console.log(this.division.StartTime);
+  	console.log(this.division.Ring)
   	this.viewCtrl.dismiss(this.division);
   }
 

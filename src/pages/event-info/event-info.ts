@@ -38,7 +38,8 @@ divisions = [];
         let divisionData = data;
         this.eventRef.push({
           divisionName: divisionData.Name,
-          divisionType: divisionData.Type
+          divisionStartTime: divisionData.StartTime,
+          divisionRing: divisionData.Ring
         });
       }
   this.divisions = [];
@@ -52,7 +53,8 @@ divisions = [];
           parentid: snap.key,
           id: child.key,
           divisionName: child.val().divisionName,
-          divisionType: child.val().divisionType,
+          divisionStartTime: child.val().divisionStartTime,
+          divisionRing: child.val().divisionRing
         }
         console.log(newitem.parentid);
         this.divisions.push(newitem);
@@ -82,7 +84,8 @@ divisions = [];
           parentid: snap.key,
           id: child.key,
           divisionName: child.val().divisionName,
-          divisionType: child.val().divisionType,
+          divisionStartTime: child.val().divisionStartTime,
+          divisionRing: child.val().divisionRing,
         }
         console.log(newitem.parentid);
         this.divisions.push(newitem);

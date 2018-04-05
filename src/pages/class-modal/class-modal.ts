@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController,ViewController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the ClassModalPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,6 +8,11 @@ import { IonicPage, NavController,ViewController, NavParams } from 'ionic-angula
   templateUrl: 'class-modal.html',
 })
 export class ClassModalPage {
+	className;
+	classDelay;
+	classDescripton;
+
+	class = {Name: '', Delay: 0, Description: ''};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
@@ -24,4 +23,11 @@ export class ClassModalPage {
 	cancel(){
   	this.viewCtrl.dismiss();
  	 }
+
+ 	 save(){
+  	console.log(this.class.Name);
+  	console.log(this.class.Delay);
+  	console.log(this.class.Description)
+  	this.viewCtrl.dismiss(this.class);
+  }
 }
