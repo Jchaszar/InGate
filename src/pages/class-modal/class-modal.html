@@ -23,11 +23,18 @@
 		<ion-item>
 			<ion-input type="text" placeholder="Enter a title for the class" [(ngModel)]="class.Name">
 			</ion-input>
+		</ion-item>
+		<ion-item>
 			<ion-input type="number" placeholder="Enter a delay for the class" [(ngModel)]="class.Delay">
 			</ion-input>
+		</ion-item>
+		<ion-item>
 			<ion-textarea type="text" placeholder="Enter a description for the class" [(ngModel)]="class.Description">
 			</ion-textarea>
 		</ion-item>
 	</ion-list>
+	<button ion-button full icon-left (click)="save()">
+		<ion-icon name="checkmark"></ion-icon> Add Class
+	</button>
 
 </ion-content>
