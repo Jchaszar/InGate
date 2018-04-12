@@ -12,7 +12,7 @@ export class ClassModalPage {
 	classDelay;
 	classDescripton;
 
-	class = {Name: '', Delay: 0, Description: ''};
+	class = {Name: '', Delay: null, Description: ''};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
