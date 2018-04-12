@@ -12,6 +12,21 @@
 
 
 <ion-content padding>
+	<ion-list>
+		<ion-item *ngFor="let class of classes" >
+			<ion-card>
+				<ion-card-content>
+					<ion-card-title>
+						{{class.className}}
+					</ion-card-title>
+					<p>Start Time: &nbsp;</p>
+					{{class.classDelay}}
+					<p>Description: &nbsp;</p>
+					{{class.classDescription}}
+				</ion-card-content>
+			</ion-card>
+		</ion-item>
+	</ion-list>
 	<button ion-button full icon-left (click)="addClass()">
 		<ion-icon name="add"></ion-icon> Add Class
 	</button>

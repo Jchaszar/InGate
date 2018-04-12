@@ -15,6 +15,7 @@ divisionStartTime;
 divisionID;
 divisionParentID;
 divisionRef;
+classes = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   	this.divisionName = this.navParams.get('division').divisionName;
     this.divisionStartTime = this.navParams.get('division').divisionStartTime;
@@ -22,7 +23,7 @@ divisionRef;
     this.divisionParentID = this.navParams.get('division').parentid;
     console.log(this.divisionParentID);
     console.log(this.divisionID);
-    this.divisionRef = firebase.database().ref('Events/' + this.divisionParentID + this.divisionID);
+    this.divisionRef = firebase.database().ref('Events/' + this.divisionParentID + '/' + this.divisionID);
   }
 
   ionViewDidLoad() {
@@ -30,7 +31,59 @@ divisionRef;
   }
   addClass(){
   	let modal = this.modalCtrl.create(ClassModalPage);
+
   	modal.present();
+  	modal.onDidDismiss(data => {
+      if(data){
+      	console.log("pushing data");
+        let classData = data;
+        this.divisionRef.push({
+          className: classData.Name,
+          classDelay: classData.Delay,
+          classDescription: classData.Description
+        });
+      }
+    this.classes = [];
+    this.divisionRef.on('value', (snap) => {
+      snap.forEach((child) => {
+        if(child.val().className == null){
+          console.log(".");
+        }
+        else{
+        let newitem = {
+          parentid: snap.key,
+          id: child.key,
+          className: child.val().className,
+          classDelay: child.val().classDelay,
+          classDescription: child.val().classDescription,
+        }
+        console.log(newitem.parentid);
+        this.classes.push(newitem);
+      }
+      })
+  })
+  })
+  }
+  ionViewWillEnter(){
+  	this.classes = [];
+    this.divisionRef.on('value', (snap) => {
+      snap.forEach((child) => {
+        if(child.val().className == null){
+          console.log(".");
+        }
+        else{
+        let newitem = {
+          parentid: snap.key,
+          id: child.key,
+          className: child.val().className,
+          classDelay: child.val().classDelay,
+          classDescription: child.val().classDescription,
+        }
+        console.log(newitem.parentid);
+        this.classes.push(newitem);
+      }
+      })
+  })
   }
 
 }
