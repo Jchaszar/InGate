@@ -1,30 +1,96 @@
 
 <ion-header>
+<style>
+.item{
+	background-color:#000000;
+	margin-bottom:10px;
+	border-radius:15pt;
+	border-bottom: none;
+    box-shadow: none;
+    border-top:none;
+}
+.card{
+	margin-top:-10px;
+	margin-left:-5px;
+	background-color:#000000;
+    box-shadow: none;
+    width:100%;
+    float:left;
+}
+.title{
+	margin-bottom:10px;
+	font-size:25px;
+	color:#3DAAE0;
+	font-family: 'Lato-Bold';
+}
+.text{
+	color:white;
+	margin-top:5px;
+	font-size:14px;
+}
+.text2{
+	color:#3DAAE0;
+	font-size:16px;
+	margin-top:15px;
+}
+.bottom-left{
+	width:50%;
+	margin-bottom:-10%;
+	float:left;
+	height:10px;
+	background-color:#3DAAE0;
+}
+.eventImage{
+height:135px;
+width:135px;
+float:right;
+margin-left:50%;
+margin-top:14%;
+position:absolute;
+}
+.inline{
+	display:inline-block;
+	width:100%;
+}
+.bottom-right{
+	width:50%;
+	margin-bottom:-2%;
+	float:right;
+	height:10px;
+	background-color:#253E93;
+}
 
+</style>
   <ion-navbar color="primary">
   	<button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" style="color:#253E93"></ion-icon>
     </button>
-    <ion-title>Manage Events</ion-title>
+    <ion-title style="font-family: 'Lato-Bold';">Manage Events</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color:#606060">
 	<ion-list>
-		<ion-item *ngFor="let event of eventArr">
+		<ion-item class="item" *ngFor="let event of eventArr">
+			<div class="inline">
 			<ion-card (click)="viewEvent(event)">
-				<ion-card-content>
-				<ion-card-title>
+				<ion-card-content class="card">
+				<ion-card-title class="title">
 					{{event.eventName}}
 				</ion-card-title>
-				<p>Location: &nbsp;</p>
-				{{event.eventLocation}}
-				<p>Date: &nbsp;</p>
-				{{event.eventDate}}
+				<p class="text2">Location: &nbsp;</p>
+				<p class="text">{{event.eventLocation}}</p>
+				<p class="text2">Date: &nbsp;</p>
+				<p class="text">{{event.eventDate}}</p>
 			</ion-card-content>
+			<img class="eventImage" src="../../assets/imgs/InGateB.png"/>
 			</ion-card>
+				
+		</div>
+			<div class="bottom-left"> </div>
+			<div class="bottom-right"> </div>
 		</ion-item>
 	</ion-list>
 </ion-content>
