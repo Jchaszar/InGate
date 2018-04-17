@@ -11,8 +11,9 @@ export class ClassModalPage {
 	className;
 	classDelay;
 	classDescripton;
+	classRefID;
 
-	class = {Name: '', Delay: null, Description: ''};
+	class = {Name: '', Delay: null, Description: '', RefID: null};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }

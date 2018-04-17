@@ -3,6 +3,7 @@ import { IonicPage, NavController, ModalController, NavParams } from 'ionic-angu
 import firebase from 'firebase';
 
 import { ClassModalPage } from '../class-modal/class-modal';
+import { ClassInfoPage } from '../class-info/class-info';
 
 @IonicPage()
 @Component({
@@ -40,7 +41,8 @@ classes = [];
         this.divisionRef.push({
           className: classData.Name,
           classDelay: classData.Delay,
-          classDescription: classData.Description
+          classDescription: classData.Description,
+          classRefID: classData.RefID,
         });
       }
     this.classes = [];
@@ -56,6 +58,7 @@ classes = [];
           className: child.val().className,
           classDelay: child.val().classDelay,
           classDescription: child.val().classDescription,
+          classRefID: child.val().classRefID,
         }
         console.log(newitem.parentid);
         this.classes.push(newitem);
@@ -78,6 +81,7 @@ classes = [];
           className: child.val().className,
           classDelay: child.val().classDelay,
           classDescription: child.val().classDescription,
+          classRefID: child.val().classRefID,
         }
         console.log(newitem.parentid);
         this.classes.push(newitem);
@@ -86,4 +90,10 @@ classes = [];
   })
   }
 
+
+  viewClass(class){
+  	this.navCtrl.setRoot(ClassInfoPage, {
+      class: class
+    })
+  }
 }
