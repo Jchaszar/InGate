@@ -11,9 +11,8 @@ export class ClassModalPage {
 	className;
 	classDelay;
 	classDescripton;
-	classRefID;
 
-	class = {Name: '', Delay: null, Description: '', RefID: null};
+	class = {Name: '', Delay: null, Description: ''};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
@@ -23,12 +22,13 @@ export class ClassModalPage {
   }
 	cancel(){
   	this.viewCtrl.dismiss();
- 	}
+ 	 }
 
- 	save(){
+ 	 save(){
   	console.log(this.class.Name);
   	console.log(this.class.Delay);
   	console.log(this.class.Description)
+    
   	this.viewCtrl.dismiss(this.class);
   }
 }
