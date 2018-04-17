@@ -14,13 +14,14 @@
 
 
 <ion-content padding>
+	<ion-searchbar placeholder="Search Riders" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
 	<ion-list>
 			<ion-item *ngFor="let rider of availableRiders">
 				<ion-label>
-				<h2>{{rider.fullName}}</h2>
-			</ion-label>
-				<ion-radio (click)="updateRiders(rider)"> </ion-radio>
-
+					<h2>{{rider.fullName}}</h2>
+				</ion-label>
+				<!-- <ion-checkbox [(click)="updateRiders(rider)"]> </ion-checkbox> -->
+				<ion-checkbox checked="false" [(ngModel)]="rider.selected"></ion-checkbox>
 			</ion-item>
 	</ion-list>
 	<button ion-button full icon-left (click)="save()">
