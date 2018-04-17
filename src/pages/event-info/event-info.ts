@@ -39,6 +39,7 @@ divisions = [];
         this.eventRef.push({
           divisionName: divisionData.Name,
           divisionStartTime: divisionData.StartTime,
+          divisionStartDate: divisionData.StartDate,
           divisionRing: divisionData.Ring
         });
       }
@@ -54,6 +55,7 @@ divisions = [];
           id: child.key,
           divisionName: child.val().divisionName,
           divisionStartTime: child.val().divisionStartTime,
+          divisionStartDate: child.val().divisionStartDate,
           divisionRing: child.val().divisionRing
         }
         console.log(newitem.parentid);
@@ -85,6 +87,7 @@ divisions = [];
           id: child.key,
           divisionName: child.val().divisionName,
           divisionStartTime: child.val().divisionStartTime,
+          divisionStartDate: child.val().divisionStartDate,
           divisionRing: child.val().divisionRing,
         }
         console.log(newitem.parentid);

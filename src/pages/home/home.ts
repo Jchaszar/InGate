@@ -27,7 +27,7 @@ export class Rider{
 export class HomePage {
 	private event = [];
 	public registeredClasses: Clss[] = [];
-	public currentRider: Rider;
+	public currentRider: Rider = new Rider();
 	private eventRef;
 	private riderRef;
   constructor(public navCtrl: NavController, public authProvider: AuthProvider) {
@@ -35,12 +35,6 @@ export class HomePage {
   		var user = firebase.auth().currentUser.uid;
   		this.riderRef = firebase.database().ref('Riders/' + user);
   }
-/*        let newitem = {
-          id: child.key,
-          eventName: child.val().name,
-          eventLocation: child.val().location,
-          eventDate: child.val().date,
-        }*/
   logOut(){
   	this.authProvider.logoutUser().then(() => {
 		this.navCtrl.setRoot("LoginPage");
@@ -55,8 +49,19 @@ export class HomePage {
   			rider.Name = data.val().fullName;
   			this.currentRider = rider;
   		}
+  	});  
+  	console.log("called");	
+  	this.eventRef.on('value', (events) => {
+  		if(events.val() != null){
+  		events.forEach((event) => {
+  			if(event.val() != null){
+  				var id = event.key;
+  				console.log(id);
+  				console.log(event.val().name);
+  			}
+  		});
+  		}
   	});
-  	
 
   }
 }

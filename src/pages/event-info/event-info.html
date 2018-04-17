@@ -14,13 +14,16 @@
 <ion-content padding>
 	<ion-list>
 		<ion-item *ngFor="let division of divisions" (click)="viewDivision(division)">
+			<!-- <ion-datetime displayFormat="MMMM DD, YYYY" disabled=true placeholder="fuck">
+			</ion-datetime> -->
 			<ion-card>
 				<ion-card-content>
 					<ion-card-title>
 						{{division.divisionName}}
 					</ion-card-title>
-					<p>Start Time: &nbsp;</p>
-					{{division.divisionStartTime}}
+					<p>Location: {{division.divisionRing}}<br>
+					Start Date: {{division.divisionStartDate}}<br>
+					Start Time: {{division.divisionStartTime}}</p>
 				</ion-card-content>
 			</ion-card>
 		</ion-item>
