@@ -17,13 +17,15 @@ export class AddRiderModalPage {
   	this.riderRef = firebase.database().ref('Riders/');
   	this.riderRef.on('value', (snap) => {
   		snap.forEach((child) => {
+  			console.log(child.val().key);
+
   			if(child.val().fullName == null){
   				console.log('.');
   			}
   			else{
   				let newRider = {
   					fullName : child.val().fullName,
-  					id: child.val().key,
+  					id: child.key,
   					email : child.val().email,
   				}
   				this.availableRiders.push(newRider);
