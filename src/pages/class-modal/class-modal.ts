@@ -23,9 +23,9 @@ export class ClassModalPage {
   }
 	cancel(){
   	this.viewCtrl.dismiss();
- 	 }
+ 	}
 
- 	 save(){
+ 	save(){
   	console.log(this.class.Name);
   	console.log(this.class.Delay);
   	console.log(this.class.Description)

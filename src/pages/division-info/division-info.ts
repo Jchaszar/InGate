@@ -43,6 +43,7 @@ classes = [];
           classDelay: classData.Delay,
           classDescription: classData.Description,
           classRefID: classData.RefID,
+          eventID: this.divisionParentID,
         });
       }
     this.classes = [];
@@ -59,6 +60,7 @@ classes = [];
           classDelay: child.val().classDelay,
           classDescription: child.val().classDescription,
           classRefID: child.val().classRefID,
+          eventID: this.divisionParentID,
         }
         console.log(newitem.parentid);
         this.classes.push(newitem);
@@ -82,6 +84,7 @@ classes = [];
           classDelay: child.val().classDelay,
           classDescription: child.val().classDescription,
           classRefID: child.val().classRefID,
+          eventID: this.divisionParentID,
         }
         console.log(newitem.parentid);
         this.classes.push(newitem);
@@ -91,9 +94,9 @@ classes = [];
   }
 
 
-  viewClass(class){
+  viewClass(class1){
   	this.navCtrl.setRoot(ClassInfoPage, {
-      class: class
+      class: class1
     })
   }
 }

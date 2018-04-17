@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar>
+  	<ion-buttons start>
+  		<button ion-button icon-only (click) = "cancel()">
+  		<ion-icon name="close"></ion-icon>
+  	</button>
+  </ion-buttons>
+    <ion-title>AddRiderModal</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+			<ion-item *ngFor="let rider of availableRiders">
+				<ion-label>
+				<h2>{{rider.fullName}}</h2>
+			</ion-label>
+				<ion-radio (click)="updateRiders(rider)"> </ion-radio>
+
+			</ion-item>
+	</ion-list>
+	<button ion-button full icon-left (click)="save()">
+		<ion-icon name="checkmark"></ion-icon> Add Riders to Class
+	</button>
+</ion-content>
