@@ -17,6 +17,7 @@ export class ClassInfoPage {
 	classParentID;
 	classRefID;
 	classRef;
+  classRiderRef;
   eventID;
   riderRef;
   riders = [];
@@ -31,6 +32,7 @@ export class ClassInfoPage {
     this.eventID = this.navParams.get('class').eventID;
     this.riderRef = firebase.database().ref('Riders/ ')
     this.classRef = firebase.database().ref('Events/ ' + this.eventID + this.classParentID + this.classID );
+    this.classRiderRef = firebase.database().ref('Events/ ' + this.eventID + this.classParentID + this.classID + '/Riders/');
     console.log(this.eventID);
   }
   ionViewWillEnter(){
@@ -47,6 +49,10 @@ export class ClassInfoPage {
       if(data){
         console.log("pushing data");
         let riderData = data;
+        this.classRiderRef.push({
+          fullName: riderData.fullName,
+          id: riderData.id,
+        })
       }
     })
   }
