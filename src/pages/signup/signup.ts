@@ -35,7 +35,8 @@ export class SignupPage {
      	this.riderRef = firebase.database().ref('Riders/');
 
       this.signupForm = formBuilder.group({
-      	fullName: [''],
+      	firstName: ['', Validators.compose([Validators.minLength(1),Validators.required])],
+        lastName: ['',Validators.compose([Validators.minLength(1),Validators.required])],
         email: ['', 
           Validators.compose([Validators.required, EmailValidator.isValid])],
         password: ['', 
@@ -58,7 +59,7 @@ export class SignupPage {
     //sign up for riders
   } else if(this.signupForm.value.userType == "rider") {
     this.authProvider.signupRider(this.signupForm.value.email, 
-      this.signupForm.value.password, this.signupForm.value.fullName)
+      this.signupForm.value.password, this.signupForm.value.firstName + " " + this.signupForm.value.lastName)
     .then(() => {
       this.loading.dismiss().then( () => {
       	this.events.publish('rider login');
