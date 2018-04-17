@@ -17,7 +17,7 @@ eventLocation;
 eventRef;
 divisions = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
-        this.eventName = this.navParams.get('event').eventName;
+    this.eventName = this.navParams.get('event').eventName;
     this.eventDate = this.navParams.get('event').eventDate;
     this.eventID = this.navParams.get('event').id;
     this.eventLocation = this.navParams.get('event').eventLocation;

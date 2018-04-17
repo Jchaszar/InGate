@@ -11,12 +11,16 @@ import { EventInfoPage} from '../pages/event-info/event-info';
 import { ClassModalPage } from '../pages/class-modal/class-modal';
 import { DivisionModalPage } from '../pages/division-modal/division-modal';
 import { DivisionInfoPage } from '../pages/division-info/division-info';
+import { ClassInfoPage } from '../pages/class-info/class-info';
+import { AddRiderModalPage } from '../pages/add-rider-modal/add-rider-modal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 
 //page modules
+import { ClassInfoPageModule } from '../pages/class-info/class-info.module';
+import { AddRiderModalPageModule } from '../pages/add-rider-modal/add-rider-modal.module';
 import { LoginPageModule } from '../pages/login/login.module';
 import { SignupPageModule } from '../pages/signup/signup.module';
 import { OrganizerhomePageModule } from '../pages/organizerhome/organizerhome.module';
@@ -41,6 +45,8 @@ import { ClassModalPageModule } from '../pages/class-modal/class-modal.module';
     DivisionInfoPageModule,
     CreateEventPageModule,
     EventInfoPageModule,
+    AddRiderModalPageModule,
+    ClassInfoPageModule,
     OrganizerhomePageModule,
     IonicModule.forRoot(MyApp),
   ],
@@ -50,6 +56,8 @@ import { ClassModalPageModule } from '../pages/class-modal/class-modal.module';
     LoginPage,
     ClassModalPage,
     DivisionModalPage,
+    AddRiderModalPage,
+    ClassInfoPage,
     DivisionInfoPage,
     EventInfoPage,
     SignupPage,
