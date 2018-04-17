@@ -1,6 +1,18 @@
 
 <ion-header>
-
+<style>
+.Background{
+  background-color:black;
+}
+.Input{
+  background-color:black;
+  padding-left:3px;
+  padding-bottom:15px;
+}
+.text{
+  color:white;
+}
+</style>
   <ion-navbar color="primary">
     <ion-title>Create New Account</ion-title>
   </ion-navbar>
@@ -8,31 +20,31 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="Background" padding>
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
-  	<ion-item>
-      <ion-label stacked>Name</ion-label>
-      <ion-input formControlName="fullName" placeholder="Enter your name" 
+  	<ion-item class="Input">
+      <ion-label class="text" stacked>Name</ion-label>
+      <ion-input class ="text" formControlName="fullName" placeholder="Enter your name" 
         [class.invalid]="!signupForm.controls.fullName.valid && blur">
       </ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input formControlName="email" type="email" placeholder="Enter Valid Email Address" 
+    <ion-item class="Input">
+      <ion-label class="text" stacked>Email</ion-label>
+      <ion-input class="text" formControlName="email" type="email" placeholder="Enter Valid Email Address" 
         [class.invalid]="!signupForm.controls.email.valid && blur">
       </ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input formControlName="password" type="password" placeholder="Enter Password(6+ characters)" 
+    <ion-item style="padding-bottom:35px;" class="Input">
+      <ion-label stacked class="text">Password</ion-label>
+      <ion-input class="text" formControlName="password" type="password" placeholder="Enter Password(6+ characters)" 
         [class.invalid]="!signupForm.controls.password.valid && blur">
       </ion-input>
     </ion-item>
-    <ion-item>
-    	<ion-label>User Type</ion-label>
-    	<ion-select formControlName="userType" [class.invalid]="!signupForm.controls.userType.valid && blur">
+    <ion-item style="padding-bottom:40px;" class="Input">
+    	<ion-label class="text">User Type</ion-label>
+    	<ion-select class="text" formControlName="userType" [class.invalid]="!signupForm.controls.userType.valid && blur">
     		<ion-option value="rider" selected="true">Rider</ion-option>
    		    <ion-option value="organizer">Event Organizer</ion-option>
  	 	</ion-select>
