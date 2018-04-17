@@ -1,42 +1,57 @@
 <ion-header>
-
+<style>
+.Button1{
+	background-color:#3DAAE0;
+}
+.Button2{
+	background-color:#253E93;
+}
+.Background{
+	background-color:black;
+}
+.Input{
+	background-color:black;
+	padding-left:3px;
+}
+.text{
+	color:white;
+}
+</style>
 
 </ion-header>
 
 
-<ion-content padding>
-	<img src="../../assets/imgs/InGateLogo.jpg" style="margin-left: auto;margin-right: auto; display: block;">
+<ion-content class="Background" padding>
+	<img src="../../assets/imgs/InGateB.png" style="margin-left: auto;margin-right: auto; display: block;">
 	<form [formGroup] ="loginForm"
 	 (submit)="loginUser()" novalidate>
-	 <ion-item style="padding-left: 3px">
-	 	<ion-label stacked>Email</ion-label>
-		<ion-input formControlName="email" type="email" style="margin-left: 5px" placeholder="Your Email Address" [class.invalid]="!loginForm.controls.email.valid && blur">
+	 <ion-item class="Input">
+	 	<ion-label class="text" stacked>Email</ion-label>
+		<ion-input formControlName="email" type="email" class="text" style="margin-left: 5px" placeholder="Your Email Address" [class.invalid]="!loginForm.controls.email.valid && blur">
 		</ion-input>
 	</ion-item>
 
-	<ion-item style="padding-left: 3px">
-		<ion-label stacked>Password</ion-label>
-		<ion-input formControlName="password" type="password" placeholder="Your Password"
+	<ion-item style="padding-bottom:10px;" class="Input">
+		<ion-label class="text" stacked>Password</ion-label>
+		<ion-input class="text" formControlName="password" type="password" placeholder="Your Password"
 		[class.invalid]="!loginForm.controls.password.valid && blur">
 		</ion-input>
 	</ion-item>
 
-	<button ion-button block type="submit" color="default" [disabled]="!loginForm.valid">
+	<button class="Button1"  ion-button block type="submit" color="default" [disabled]="!loginForm.valid">
 		Login
 	</button>
 </form>
 <br>
 
-<button ion-button block clear (click)="goToResetPassword()">
+<button style="color:#3DAAE0" ion-button block clear (click)="goToResetPassword()">
 	Forgot your password?
 </button>
-
-
 </ion-content>
 
-<ion-footer>
-	<ion-toolbar>
-		<button ion-button block (click)="goToSignup()">
+<ion-footer style="background-color:black;">
+	<ion-toolbar transparent>
+		<button class="Button2" ion-button block (click)="goToSignup()">
 	Create New Account
 	</button>
 	</ion-toolbar>
