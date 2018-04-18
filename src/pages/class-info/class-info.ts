@@ -34,12 +34,23 @@ export class ClassInfoPage {
     this.classRef = firebase.database().ref('Events/' + this.eventID +  '/' + this.classParentID + '/' + this.classID );
     this.classRiderRef = firebase.database().ref('Events/' + this.eventID + '/' + this.classParentID + '/' + this.classID + '/riders/');
     console.log(this.eventID);
-  }
-  ionViewWillEnter(){
+    this.riders = [];
     this.classRiderRef.on('value', (snap) => {
       snap.forEach((child) => {
         let newRider = {
-          fullName: snap.val().fullName
+          fullName: child.val().fullName
+        }
+        this.riders.push(newRider);
+      })
+    })
+    console.log(this.riders);
+  }
+  ionViewWillEnter(){
+    this.riders = [];
+    this.classRiderRef.on('value', (snap) => {
+      snap.forEach((child) => {
+        let newRider = {
+          fullName: child.val().fullName
         }
         this.riders.push(newRider);
       })
