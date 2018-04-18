@@ -10,7 +10,7 @@
   	<button ion-button menuToggle>
       <ion-icon name="menu" style="color:#253E93"></ion-icon>
     </button>
-    <ion-title>{{className}} Riders</ion-title>
+    <ion-title style="font-family: 'Lato-Bold';">{{className}} Riders</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,7 +18,7 @@
 
 <ion-content padding style="background-color:black;">
   <div name="temp">
-    <button ion-button full icon-left (click)="addRider()">
+    <button style="margin-bottom:15px; border-radius:8px" ion-button full icon-left (click)="addRider()">
     <ion-icon name="add"></ion-icon> Add Riders
   </button>
 	<ion-list  style="background-color:black;border:2px" >
