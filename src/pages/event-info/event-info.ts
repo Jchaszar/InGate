@@ -45,6 +45,7 @@ divisions = [];
       }
   this.divisions = [];
     this.eventRef.on('value', (snap) => {
+      this.divisions = [];
       snap.forEach((child) => {
         if(child.val().divisionName == null){
           console.log(".");

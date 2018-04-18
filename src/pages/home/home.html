@@ -1,10 +1,16 @@
 <ion-header style="background-color:#3DAAE0;">
-  <ion-navbar transparent>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" style="color:#253E93"></ion-icon>
+    </button>
+    <ion-title style="font-family: 'Lato-Bold';">Welcome {{currentRider.Name}}!</ion-title>
+  </ion-navbar>
+<!--   <ion-navbar transparent>
     <button ion-button menuToggle>
       <ion-icon style="color:#253E93;" name="menu"></ion-icon>
     </button>
-    <ion-title>My Events</ion-title>
-  </ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar> -->
 </ion-header>
 <!-- public ClassID: number;
   public ClassIDref: string;
@@ -24,25 +30,21 @@
   public EventDate: string;
   public EventLocation: string;
   public EventName: string; -->
-<ion-content padding style="background-color:#253E93">
+<ion-content padding style="background-color:#606060">
     <ion-list>
     <ion-item class="item" *ngFor="let clazz of registeredClasses">
       <div class="inline">
       <ion-card (click)="viewClass(clazz)">
         <ion-card-content class="card">
-        <ion-card-title class="title">
-          {{clazz.EventName}}
+        <ion-card-title class="title" style="font-size: 20px">
+          {{clazz.ClassID}} {{clazz.ClassTitle}}
         </ion-card-title>
         <p class="text2">Location: &nbsp;</p>
-        <p class="text">{{clazz.EventLocation}}</p>
+        <p class="text">{{clazz.DivisionRing}}</p>
         <p class="text2">Date: &nbsp;</p>
-        <p class="text">{{clazz.EventDate}}</p>
-        <p class="text">
-        {{clazz.DivisionName}}<br>
-        {{clazz.DivisionRing}}<br>
-        {{clazz.ClassTitle}}<br>
-        {{clazz.ClassID}}
-      </p>
+        <p class="text">{{clazz.DivisionStartDate}} {{clazz.DivisionStartTime}}</p>
+        <br>
+        <p class="text2" style="font-size:18px">{{clazz.EventName}}</p>
       </ion-card-content>
       <img class="eventImage" src="../../assets/imgs/InGateB.png"/>
       </ion-card>

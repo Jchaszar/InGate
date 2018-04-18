@@ -49,6 +49,7 @@ export class ClassInfoPage {
   ionViewWillEnter(){
     this.riders = [];
     this.classRiderRef.on('value', (snap) => {
+      this.riders = [];
       snap.forEach((child) => {
         let newRider = {
           fullName: child.val().fullName

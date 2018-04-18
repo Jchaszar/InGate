@@ -1,7 +1,7 @@
 
 <ion-header>
 
-  <ion-navbar style="background-color:#3DAAE0;">
+  <ion-navbar color="primary">
   	<ion-buttons start>
   		<button ion-button icon-only (click) = "cancel()">
   		<ion-icon style="color:#253E93;" name="close"></ion-icon>
@@ -12,9 +12,12 @@
 
 </ion-header>
 
-
 <ion-content padding style="background-color:black;">
+		<button ion-button full icon-left (click)="save()">
+		<ion-icon name="checkmark"></ion-icon> Add Riders to Class
+	</button>
 	<ion-searchbar style="background-color:black;" placeholder="Search Riders" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
+
 	<ion-list>
 			<ion-item style="background-color:black;" *ngFor="let rider of availableRiders">
 				<ion-label>
@@ -23,7 +26,4 @@
 				<ion-checkbox style="color:#3DAAE0;" checked="false" [(ngModel)]="rider.selected"></ion-checkbox>
 			</ion-item>
 	</ion-list>
-	<button ion-button full icon-left (click)="save()">
-		<ion-icon name="checkmark"></ion-icon> Add Riders to Class
-	</button>
 </ion-content>

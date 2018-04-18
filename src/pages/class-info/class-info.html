@@ -17,12 +17,24 @@
 
 
 <ion-content padding style="background-color:black;">
-	<ion-list style="background-color:black;">
+  <div name="temp">
+    <button ion-button full icon-left (click)="addRider()">
+    <ion-icon name="add"></ion-icon> Add Riders
+  </button>
+	<ion-list  style="background-color:black;border:2px" >
 		<ion-item style="color:white; background-color:black;" *ngFor="let rider of riders">
 			<p style="color:white;">{{rider.fullName}}</p>
+
 		</ion-item>
 	</ion-list>
-	<button ion-button full icon-left (click)="addRider()">
-		<ion-icon name="add"></ion-icon> Add Riders
-	</button>
+</div>
 </ion-content>
+<style>
+#temp{
+  margin-bottom:10px;
+  border-radius:15pt;
+  border-bottom: none;
+    box-shadow: none;
+    border-top:none;
+}
+</style>

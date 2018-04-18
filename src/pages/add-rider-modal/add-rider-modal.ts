@@ -41,6 +41,7 @@ export class AddRiderModalPage {
  initializeItems(){
       this.availableRiders = [];
       this.riderRef.on('value', (snap) => {
+        this.availableRiders = [];
          snap.forEach((child) => {
         if(child.val().fullName == null){
           //console.log('.');
