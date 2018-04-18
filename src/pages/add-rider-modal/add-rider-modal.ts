@@ -14,8 +14,10 @@ export class AddRiderModalPage {
 	classRiders = [];
 	riderRef;
 	selectedRider;
+	disabledRiders;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   	this.riderRef = firebase.database().ref('Riders/');
+  	this.disabledRiders = this.navParams.get('disabledRiders');
      this.initializeItems();
   }
   cancel(){
@@ -26,6 +28,11 @@ export class AddRiderModalPage {
   this.staticRiders.forEach((data) => {
       if(data.selected){
          this.classRiders.push(data);
+         this.disabledRiders.forEach((disabled) => {
+      		if(data.fullName == disabled.fullName){
+      			this.classRiders.pop();
+      		}
+      	})
       }
   });
   console.log(this.classRiders);

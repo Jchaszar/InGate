@@ -21,6 +21,7 @@ export class ClassInfoPage {
   eventID;
   riderRef;
   riders = [];
+  disabledRiders = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   	this.className = this.navParams.get('class').className;
@@ -61,7 +62,8 @@ export class ClassInfoPage {
     
   }
   addRider(){
-    let modal = this.modalCtrl.create('AddRiderModalPage');
+    this.disabledRiders = this.riders
+    let modal = this.modalCtrl.create('AddRiderModalPage', {disabledRiders: this.disabledRiders});
     modal.present();
     modal.onDidDismiss(data => {
         if(data){
