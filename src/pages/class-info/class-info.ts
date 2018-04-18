@@ -36,7 +36,14 @@ export class ClassInfoPage {
     console.log(this.eventID);
   }
   ionViewWillEnter(){
-
+    this.classRiderRef.on('value', (snap) => {
+      snap.forEach((child) => {
+        let newRider = {
+          fullName: snap.val().fullName
+        }
+        this.riders.push(newRider);
+      })
+    })
   }
 
   ionViewDidLoad() {
@@ -50,12 +57,15 @@ export class ClassInfoPage {
         console.log("pushing data");
         console.log(data);
         let riderData = data;
-        console.log(data.fullName);
-        console.log(riderData.fullName);
-        this.classRiderRef.push({
-          fullName: riderData.Name,
-          id: riderData.id
+        riderData.forEach((snap) => {
+          this.classRiderRef.push({
+          fullName: snap.fullName,
+          id: snap.id
         });
+          this.riders.push(snap);
+        })
+
+        
       }
     })
   }

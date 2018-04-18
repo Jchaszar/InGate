@@ -14,7 +14,11 @@
 
 
 <ion-content padding>
-
+	<ion-list>
+		<ion-item *ngFor="let rider of riders">
+			<p>{{rider.fullName}}</p>
+		</ion-item>
+	</ion-list>
 	<button ion-button full icon-left (click)="addRider()">
 		<ion-icon name="add"></ion-icon> Add Riders
 	</button>

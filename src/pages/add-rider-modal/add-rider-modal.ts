@@ -40,7 +40,7 @@ export class AddRiderModalPage {
         else{
           let newRider = {
             fullName : child.val().fullName,
-            id: child.val().key,
+            id: child.key,
             email : child.val().email,
             selected: false
           }
