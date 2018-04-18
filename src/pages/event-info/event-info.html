@@ -74,13 +74,15 @@
 						{{division.divisionName}}
 					</ion-card-title>
 					<p class="text2">Location:</p><p class="text"> {{division.divisionRing}}</p>
-					<p class="text2">Start</p> <p class="text">Date: {{division.divisionStartDate}}</p>
+					<p class="text2">Start Date:</p> <p class="text">{{division.divisionStartDate}}</p>
 					<p class="text2">Start Time:</p> <p class="text"> {{division.divisionStartTime}}</p>
 				</ion-card-content>
 			</ion-card>
+			<div class="bottom-left"> </div>
+			<div class="bottom-right"> </div>
 		</ion-item>
 	</ion-list>
-	<button ion-button full icon-left (click)="createDivision()">
+	<button  style="border-radius:8px" ion-button full icon-left (click)="createDivision()">
 		<ion-icon name="add"></ion-icon> Create Division
 	</button>
 

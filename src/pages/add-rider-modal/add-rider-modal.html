@@ -7,13 +7,13 @@
   		<ion-icon style="color:#253E93;" name="close"></ion-icon>
   	</button>
   </ion-buttons>
-    <ion-title style="color:white;">Add Riders</ion-title>
+    <ion-title style="color:white; font-family: 'Lato-Bold';">Add Riders</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding style="background-color:black;">
-		<button ion-button full icon-left (click)="save()">
+		<button style="border-radius:8px" ion-button full icon-left (click)="save()">
 		<ion-icon name="checkmark"></ion-icon> Add Riders to Class
 	</button>
 	<ion-searchbar style="background-color:black;" placeholder="Search Riders" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>

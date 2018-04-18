@@ -30,13 +30,13 @@
   public EventDate: string;
   public EventLocation: string;
   public EventName: string; -->
-<ion-content padding style="background-color:#606060">
+<ion-content padding style="background-image: url('../../assets/imgs/HorseshoeBackground2.svg');">
     <ion-list>
     <ion-item class="item" *ngFor="let clazz of registeredClasses">
       <div class="inline">
       <ion-card (click)="viewClass(clazz)">
         <ion-card-content class="card">
-        <ion-card-title class="title" style="font-size: 20px">
+        <ion-card-title class="title" style="font-size: 18px">
           {{clazz.ClassID}} {{clazz.ClassTitle}}
         </ion-card-title>
         <p class="text2">Location: &nbsp;</p>
@@ -44,7 +44,7 @@
         <p class="text2">Date: &nbsp;</p>
         <p class="text">{{clazz.DivisionStartDate}} {{clazz.DivisionStartTime}}</p>
         <br>
-        <p class="text2" style="font-size:18px">{{clazz.EventName}}</p>
+        <p class="text2" style="margin-top:30px; font-size:18px">{{clazz.EventName}}</p>
       </ion-card-content>
       <img class="eventImage" src="../../assets/imgs/InGateB.png"/>
       </ion-card>
