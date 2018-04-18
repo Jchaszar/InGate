@@ -30,19 +30,15 @@
       <div class="inline">
       <ion-card (click)="viewClass(clazz)">
         <ion-card-content class="card">
-        <ion-card-title class="title">
-          {{clazz.EventName}}
+        <ion-card-title class="title" style="font-size: 20px">
+          {{clazz.ClassID}} {{clazz.ClassTitle}}
         </ion-card-title>
         <p class="text2">Location: &nbsp;</p>
-        <p class="text">{{clazz.EventLocation}}</p>
+        <p class="text">{{clazz.DivisionRing}}</p>
         <p class="text2">Date: &nbsp;</p>
-        <p class="text">{{clazz.EventDate}}</p>
-        <p class="text">
-        {{clazz.DivisionName}}<br>
-        {{clazz.DivisionRing}}<br>
-        {{clazz.ClassTitle}}<br>
-        {{clazz.ClassID}}
-      </p>
+        <p class="text">{{clazz.DivisionStartDate}} {{clazz.DivisionStartTime}}</p>
+        <br>
+        <p class="text2" style="font-size:18px">{{clazz.EventName}}</p>
       </ion-card-content>
       <img class="eventImage" src="../../assets/imgs/InGateB.png"/>
       </ion-card>
