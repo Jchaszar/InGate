@@ -49,6 +49,7 @@ classes = [];
       }
     this.classes = [];
     this.divisionRef.on('value', (snap) => {
+      this.classes = [];
       snap.forEach((child) => {
         if(child.val().className == null){
           console.log(".");
@@ -74,6 +75,7 @@ classes = [];
   ionViewWillEnter(){
   	this.classes = [];
     this.divisionRef.on('value', (snap) => {
+      this.classes = [];
       snap.forEach((child) => {
         if(child.val().className == null){
           console.log(".");

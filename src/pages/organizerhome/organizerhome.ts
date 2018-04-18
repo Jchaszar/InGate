@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , Events} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import firebase from 'firebase';
 
@@ -14,16 +14,15 @@ export class OrganizerhomePage {
 	eventArr = [];
 	eventRef;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authProvider: AuthProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authProvider: AuthProvider, public events: Events) {
   	this.eventRef = firebase.database().ref('Events/');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OrganizerhomePage');
-  }
-  ionViewWillEnter(){
+  ionViewDidEnter(){
   	this.eventArr = [];
+    //console.log(this.eventArr);
   	this.eventRef.on('value', (snap) => {
+      this.eventArr = [];
       snap.forEach((child) => {
         let newitem = {
           id: child.key,
@@ -34,7 +33,7 @@ export class OrganizerhomePage {
         this.eventArr.push(newitem);
       })
   })
-  	console.log(this.eventArr);
+  	//console.log(this.eventArr);
 }
 
     logOut(){

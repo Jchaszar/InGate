@@ -130,6 +130,7 @@ export class HomePage {
   																					newRider.ID = r.val().id;
   																					newRider.Name = r.val().fullName;
   																					clazz.ClassRiders.push(newRider);
+                                            return false;
   																				});
   																				this.registeredClasses.push(clazz);
   																			}
