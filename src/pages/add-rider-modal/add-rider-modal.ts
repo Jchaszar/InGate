@@ -35,12 +35,12 @@ export class AddRiderModalPage {
       this.riderRef.on('value', (snap) => {
          snap.forEach((child) => {
         if(child.val().fullName == null){
-          console.log('.');
+          //console.log('.');
         }
         else{
           let newRider = {
             fullName : child.val().fullName,
-            id: child.val().key,
+            id: child.key,
             email : child.val().email,
             selected: false
           }
@@ -62,13 +62,4 @@ export class AddRiderModalPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddRiderModalPage');
   }
-  updateRiders(rider){
-  	this.staticRiders.forEach((data) => {
-        if(data.id == rider.id){
-          data.selected = true;
-        }
-    });
-  	console.log(this.classRiders);
-  }
-
 }

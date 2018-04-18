@@ -7,7 +7,7 @@
   		<ion-icon name="close"></ion-icon>
   	</button>
   </ion-buttons>
-    <ion-title>AddRiderModal</ion-title>
+    <ion-title>Add Riders</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,7 +20,6 @@
 				<ion-label>
 					<h2>{{rider.fullName}}</h2>
 				</ion-label>
-				<!-- <ion-checkbox [(click)="updateRiders(rider)"]> </ion-checkbox> -->
 				<ion-checkbox checked="false" [(ngModel)]="rider.selected"></ion-checkbox>
 			</ion-item>
 	</ion-list>

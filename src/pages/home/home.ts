@@ -5,12 +5,23 @@ import firebase from 'firebase';
 
 export class Clss {
 	public ID: string;
-	public IDref: number;
+	public ClassIDref: number;
 	public Title: string;
 	public Description: string;
 	public ESTStart: number;
 	public Index: number; 
 	public Riders: string[];
+	//Division Info
+	public DivisionIDref: string;
+	public DivisionName: string;
+	public DivisionRing: string;
+	public DivisionStartTime: string;
+	public DivisionStartDate: string;
+	//Event Info
+	public EventIDref: string;
+	public EventDate: string;
+	public EventLocation: string;
+	public EventName: string;
 }
 export class Rider{
 	public ID: string;
@@ -51,17 +62,27 @@ export class HomePage {
   		}
   	});  
   	console.log("called");	
+  	let data
   	this.eventRef.on('value', (events) => {
   		if(events.val() != null){
   		events.forEach((event) => {
   			if(event.val() != null){
   				var id = event.key;
-  				console.log(id);
-  				console.log(event.val().name);
+  				var tempRef = firebase.database().ref('Events/' + id);
+  				tempRef.on('value', (schools) => {
+  					if(schools.val() != null){
+  						schools.forEach((school) => {
+  							if(school.val() != null){
+  								if(school.val().divisionName != null){
+  									console.log(school.val().divisionName);
+  								}
+  							}
+  						});
+  					}
+  				});
   			}
   		});
   		}
   	});
-
   }
 }
