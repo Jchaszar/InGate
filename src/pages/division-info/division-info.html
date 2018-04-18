@@ -1,9 +1,69 @@
 
 <ion-header>
+<style>
+.item{
+	background-color:#000000;
+	margin-bottom:10px;
+	border-radius:15pt;
+	border-bottom: none;
+    box-shadow: none;
+    border-top:none;
+}
+.card{
+	margin-top:-10px;
+	margin-left:-5px;
+	background-color:#000000;
+    box-shadow: none;
+    width:100%;
+    float:left;
+}
+.title{
+	margin-bottom:10px;
+	font-size:20px;
+	color:#3DAAE0;
+	font-family: 'Lato-Bold';
+}
+.text{
+	color:white;
+	margin-top:5px;
+	font-size:14px;
+}
+.text2{
+	color:#3DAAE0;
+	font-size:16px;
+	margin-top:15px;
+}
+.bottom-left{
+	width:50%;
+	margin-bottom:-10%;
+	float:left;
+	height:10px;
+	background-color:#3DAAE0;
+}
+.eventImage{
+height:135px;
+width:135px;
+float:right;
+margin-left:50%;
+margin-top:14%;
+position:absolute;
+}
+.inline{
+	display:inline-block;
+	width:100%;
+}
+.bottom-right{
+	width:50%;
+	margin-bottom:-2%;
+	float:right;
+	height:10px;
+	background-color:#253E93;
+}
+</style>
 
   <ion-navbar color="primary">
   	<button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" style="color:#253E93"></ion-icon>
     </button>
     <ion-title>{{divisionName}} Classes</ion-title>
   </ion-navbar>
@@ -11,18 +71,18 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-image: url('../../assets/imgs/HorseshoeBackground2.svg');">
 	<ion-list>
-		<ion-item *ngFor="let class of classes" (click)="viewClass(class)" >
-			<ion-card>
+		<ion-item class="item" *ngFor="let class of classes" (click)="viewClass(class)" >
+			<ion-card class="card">
 				<ion-card-content>
-					<ion-card-title style="font-size:18px">
+					<ion-card-title class="title">
 						{{class.className}}
 					</ion-card-title>
-					<p>Start Time: &nbsp;</p>
-					{{class.classStartTime}}
-					<p>Description: &nbsp;</p>
-					{{class.classDescription}}
+					<p class="text2">Start Time: &nbsp;</p>
+					<p class="text">{{class.classStartTime}}</p>
+					<p class="text2">Description: &nbsp;</p>
+					<p class="text">{{class.classDescription}}</p>
 				</ion-card-content>
 			</ion-card>
 		</ion-item>

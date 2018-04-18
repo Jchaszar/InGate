@@ -1,9 +1,61 @@
 
 <ion-header>
+<style>
+.item{
+	background-color:#000000;
+	margin-bottom:10px;
+	border-radius:15pt;
+	border-bottom: none;
+    box-shadow: none;
+    border-top:none;
+}
+.card{
+	margin-top:-10px;
+	margin-left:-5px;
+	background-color:#000000;
+    box-shadow: none;
+    width:100%;
+    float:left;
+}
+.title{
+	margin-bottom:10px;
+	font-size:30px;
+	color:#3DAAE0;
+	font-family: 'Lato-Bold';
+}
+.text{
+	color:white;
+	margin-top:5px;
+	font-size:14px;
+}
+.text2{
+	color:#3DAAE0;
+	font-size:16px;
+	margin-top:5px;
+}
+.bottom-left{
+	width:50%;
+	margin-bottom:-10%;
+	float:left;
+	height:10px;
+	background-color:#3DAAE0;
+}
+.inline{
+	display:inline-block;
+	width:100%;
+}
+.bottom-right{
+	width:50%;
+	margin-bottom:-2%;
+	float:right;
+	height:10px;
+	background-color:#253E93;
+}
+</style>
 
   <ion-navbar color="primary">
   	<button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" style="color:#253E93"></ion-icon>
     </button>
     <ion-title>{{eventName}} Divisions</ion-title>
   </ion-navbar>
@@ -11,19 +63,19 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-image: url('../../assets/imgs/HorseshoeBackground2.svg');">
 	<ion-list>
-		<ion-item *ngFor="let division of divisions" (click)="viewDivision(division)">
+		<ion-item class="item" *ngFor="let division of divisions" (click)="viewDivision(division)">
 			<!-- <ion-datetime displayFormat="MMMM DD, YYYY" disabled=true placeholder="fuck">
 			</ion-datetime> -->
-			<ion-card>
+			<ion-card class="card">
 				<ion-card-content>
-					<ion-card-title>
+					<ion-card-title class="title">
 						{{division.divisionName}}
 					</ion-card-title>
-					<p>Location: {{division.divisionRing}}<br>
-					Start Date: {{division.divisionStartDate}}<br>
-					Start Time: {{division.divisionStartTime}}</p>
+					<p class="text2">Location:</p><p class="text"> {{division.divisionRing}}</p>
+					<p class="text2">Start</p> <p class="text">Date: {{division.divisionStartDate}}</p>
+					<p class="text2">Start Time:</p> <p class="text"> {{division.divisionStartTime}}</p>
 				</ion-card-content>
 			</ion-card>
 		</ion-item>

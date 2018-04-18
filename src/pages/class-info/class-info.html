@@ -8,7 +8,7 @@
 
   <ion-navbar color="primary">
   	<button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" style="color:#253E93"></ion-icon>
     </button>
     <ion-title>{{className}} Riders</ion-title>
   </ion-navbar>
@@ -16,14 +16,15 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color:black;">
   <div name="temp">
     <button ion-button full icon-left (click)="addRider()">
     <ion-icon name="add"></ion-icon> Add Riders
   </button>
-	<ion-list border:2px>
-		<ion-item *ngFor="let rider of riders">
-			<p>{{rider.fullName}}</p>
+	<ion-list  style="background-color:black;border:2px" >
+		<ion-item style="color:white; background-color:black;" *ngFor="let rider of riders">
+			<p style="color:white;">{{rider.fullName}}</p>
+
 		</ion-item>
 	</ion-list>
 </div>
