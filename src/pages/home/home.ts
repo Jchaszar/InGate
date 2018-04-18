@@ -133,6 +133,7 @@ export class HomePage {
   																				});
   																				this.registeredClasses.push(clazz);
   																			}
+  																			return false;
   																		});
   																	}
   																});
@@ -140,11 +141,13 @@ export class HomePage {
   														});
   													}
   												}
+  												return false;
   											});
   										}
   									});
   								}
   							}
+  							return false;
   						});
   					}
   				});
