@@ -34,7 +34,7 @@ export class ClassInfoPage {
     this.classRef = firebase.database().ref('Events/' + this.eventID +  '/' + this.classParentID + '/' + this.classID );
     this.classRiderRef = firebase.database().ref('Events/' + this.eventID + '/' + this.classParentID + '/' + this.classID + '/riders/');
     console.log(this.eventID);
-    this.riders = [];
+    /*this.riders = [];
     this.classRiderRef.on('value', (snap) => {
       snap.forEach((child) => {
         let newRider = {
@@ -42,7 +42,7 @@ export class ClassInfoPage {
         }
         this.riders.push(newRider);
       })
-    })
+    })*/
     console.log(this.riders);
   }
   ionViewWillEnter(){
@@ -64,7 +64,7 @@ export class ClassInfoPage {
     let modal = this.modalCtrl.create('AddRiderModalPage');
     modal.present();
     modal.onDidDismiss(data => {
-      if(data){
+        if(data){
         console.log("pushing data");
         console.log(data);
         let riderData = data;
@@ -73,7 +73,16 @@ export class ClassInfoPage {
           fullName: snap.fullName,
           id: snap.id
         });
-          this.riders.push(snap);
+          this.riders = [];
+          this.classRiderRef.on('value', (snap) => {
+          snap.forEach((child) => {
+          let newRider = {
+          fullName: child.val().fullName
+          }
+        this.riders.push(newRider);
+      })
+    })
+          //this.riders.push(snap);
         })
 
         

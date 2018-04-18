@@ -28,6 +28,7 @@ export class AddRiderModalPage {
          this.classRiders.push(data);
       }
   });
+  console.log(this.classRiders);
  this.viewCtrl.dismiss(this.classRiders);
  }
  initializeItems(){
