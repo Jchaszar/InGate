@@ -23,7 +23,7 @@
 <ion-content class="Background" padding>
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
   	<ion-item class="Input">
-      <ion-label class="text" stacked>Fisrt Name</ion-label>
+      <ion-label class="text" stacked>First Name</ion-label>
       <ion-input class ="text" formControlName="firstName" placeholder="Enter your first name"
         [class.invalid]="!signupForm.controls.firstName.valid && blur">
       </ion-input>

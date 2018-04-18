@@ -21,6 +21,7 @@ export class ClassInfoPage {
   eventID;
   riderRef;
   riders = [];
+  disabledRiders = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   	this.className = this.navParams.get('class').className;
@@ -34,12 +35,23 @@ export class ClassInfoPage {
     this.classRef = firebase.database().ref('Events/' + this.eventID +  '/' + this.classParentID + '/' + this.classID );
     this.classRiderRef = firebase.database().ref('Events/' + this.eventID + '/' + this.classParentID + '/' + this.classID + '/riders/');
     console.log(this.eventID);
-  }
-  ionViewWillEnter(){
+    /*this.riders = [];
     this.classRiderRef.on('value', (snap) => {
       snap.forEach((child) => {
         let newRider = {
-          fullName: snap.val().fullName
+          fullName: child.val().fullName
+        }
+        this.riders.push(newRider);
+      })
+    })*/
+    console.log(this.riders);
+  }
+  ionViewWillEnter(){
+    this.riders = [];
+    this.classRiderRef.on('value', (snap) => {
+      snap.forEach((child) => {
+        let newRider = {
+          fullName: child.val().fullName
         }
         this.riders.push(newRider);
       })
@@ -50,10 +62,11 @@ export class ClassInfoPage {
     
   }
   addRider(){
-    let modal = this.modalCtrl.create('AddRiderModalPage');
+    this.disabledRiders = this.riders
+    let modal = this.modalCtrl.create('AddRiderModalPage', {disabledRiders: this.disabledRiders});
     modal.present();
     modal.onDidDismiss(data => {
-      if(data){
+        if(data){
         console.log("pushing data");
         console.log(data);
         let riderData = data;
@@ -62,7 +75,16 @@ export class ClassInfoPage {
           fullName: snap.fullName,
           id: snap.id
         });
-          this.riders.push(snap);
+          this.riders = [];
+          this.classRiderRef.on('value', (snap) => {
+          snap.forEach((child) => {
+          let newRider = {
+          fullName: child.val().fullName
+          }
+        this.riders.push(newRider);
+      })
+    })
+          //this.riders.push(snap);
         })
 
         
