@@ -16,11 +16,11 @@
 		<ion-item *ngFor="let class of classes" (click)="viewClass(class)" >
 			<ion-card>
 				<ion-card-content>
-					<ion-card-title>
+					<ion-card-title style="font-size:18px">
 						{{class.className}}
 					</ion-card-title>
 					<p>Start Time: &nbsp;</p>
-					{{class.classDelay}}
+					{{class.classStartTime}}
 					<p>Description: &nbsp;</p>
 					{{class.classDescription}}
 				</ion-card-content>

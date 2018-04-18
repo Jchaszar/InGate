@@ -41,6 +41,7 @@ classes = [];
         this.divisionRef.push({
           className: classData.Name,
           classDelay: classData.Delay,
+          classStartTime: classData.StartTime,
           classDescription: classData.Description,
           classRefID: classData.RefID,
           eventID: this.divisionParentID,
@@ -58,6 +59,7 @@ classes = [];
           id: child.key,
           className: child.val().className,
           classDelay: child.val().classDelay,
+          classStartTime: child.val().classStartTime,
           classDescription: child.val().classDescription,
           classRefID: child.val().classRefID,
           eventID: this.divisionParentID,
@@ -82,6 +84,7 @@ classes = [];
           id: child.key,
           className: child.val().className,
           classDelay: child.val().classDelay,
+          classStartTime: child.val().classStartTime,
           classDescription: child.val().classDescription,
           classRefID: child.val().classRefID,
           eventID: this.divisionParentID,
