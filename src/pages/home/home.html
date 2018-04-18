@@ -1,10 +1,16 @@
 <ion-header style="background-color:#3DAAE0;">
-  <ion-navbar transparent>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" style="color:#253E93"></ion-icon>
+    </button>
+    <ion-title style="font-family: 'Lato-Bold';">Welcome {{currentRider.Name}}!</ion-title>
+  </ion-navbar>
+<!--   <ion-navbar transparent>
     <button ion-button menuToggle>
       <ion-icon style="color:#253E93;" name="menu"></ion-icon>
     </button>
-    <ion-title>My Events</ion-title>
-  </ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar> -->
 </ion-header>
 <!-- public ClassID: number;
   public ClassIDref: string;

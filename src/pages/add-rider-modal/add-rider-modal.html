@@ -14,6 +14,9 @@
 
 
 <ion-content padding>
+		<button ion-button full icon-left (click)="save()">
+		<ion-icon name="checkmark"></ion-icon> Add Riders to Class
+	</button>
 	<ion-searchbar placeholder="Search Riders" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
 	<ion-list>
 			<ion-item *ngFor="let rider of availableRiders">
@@ -23,7 +26,4 @@
 				<ion-checkbox checked="false" [(ngModel)]="rider.selected"></ion-checkbox>
 			</ion-item>
 	</ion-list>
-	<button ion-button full icon-left (click)="save()">
-		<ion-icon name="checkmark"></ion-icon> Add Riders to Class
-	</button>
 </ion-content>

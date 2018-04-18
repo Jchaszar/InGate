@@ -85,7 +85,7 @@ export class SignupPage {
   //sign up for organizer
   else if(this.signupForm.value.userType == "organizer") {
     this.authProvider.signupOrganizer(this.signupForm.value.email, 
-      this.signupForm.value.password, this.signupForm.value.fullName)
+      this.signupForm.value.password, this.signupForm.value.firstName + " " + this.signupForm.value.lastName)
     .then(() => {
       this.loading.dismiss().then( () => {
       	this.events.publish('organizer login');
