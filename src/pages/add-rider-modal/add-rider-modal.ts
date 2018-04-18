@@ -16,7 +16,7 @@ export class AddRiderModalPage {
 	selectedRider;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   	this.riderRef = firebase.database().ref('Riders/');
-     this.initilizeItems();
+     this.initializeItems();
   }
   cancel(){
   	this.viewCtrl.dismiss();
@@ -30,7 +30,7 @@ export class AddRiderModalPage {
   });
  this.viewCtrl.dismiss(this.classRiders);
  }
- initilizeItems(){
+ initializeItems(){
       this.availableRiders = [];
       this.riderRef.on('value', (snap) => {
          snap.forEach((child) => {

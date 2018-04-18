@@ -31,12 +31,19 @@ export class ClassInfoPage {
     this.classParentID = this.navParams.get('class').parentid;
     this.eventID = this.navParams.get('class').eventID;
     this.riderRef = firebase.database().ref('Riders/ ')
-    this.classRef = firebase.database().ref('Events/ ' + this.eventID + this.classParentID + this.classID );
-    this.classRiderRef = firebase.database().ref('Events/ ' + this.eventID + this.classParentID + this.classID + '/Riders/');
+    this.classRef = firebase.database().ref('Events/' + this.eventID +  '/' + this.classParentID + '/' + this.classID );
+    this.classRiderRef = firebase.database().ref('Events/' + this.eventID + '/' + this.classParentID + '/' + this.classID + '/riders/');
     console.log(this.eventID);
   }
   ionViewWillEnter(){
-
+    this.classRiderRef.on('value', (snap) => {
+      snap.forEach((child) => {
+        let newRider = {
+          fullName: snap.val().fullName
+        }
+        this.riders.push(newRider);
+      })
+    })
   }
 
   ionViewDidLoad() {
@@ -48,11 +55,17 @@ export class ClassInfoPage {
     modal.onDidDismiss(data => {
       if(data){
         console.log("pushing data");
+        console.log(data);
         let riderData = data;
-        this.classRiderRef.push({
-          fullName: riderData.fullName,
-          id: riderData.id,
+        riderData.forEach((snap) => {
+          this.classRiderRef.push({
+          fullName: snap.fullName,
+          id: snap.id
+        });
+          this.riders.push(snap);
         })
+
+        
       }
     })
   }
