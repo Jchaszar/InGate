@@ -42,6 +42,7 @@ export class HomePage {
 	private eventRef;
 	private riderRef;
   constructor(public navCtrl: NavController, public authProvider: AuthProvider) {
+  	  	this.registeredClasses = [];
   		this.eventRef = firebase.database().ref('Events/');
   		var user = firebase.auth().currentUser.uid;
   		this.riderRef = firebase.database().ref('Riders/' + user);
@@ -58,7 +59,7 @@ export class HomePage {
 
 
   ionViewWillEnter(){
-  	this.riderRef.on('value', (data) => {
+  	this.riderRef.once('value', (data) => {
   		if(data.val() != null){
   			var rider = new Rider();
   			rider.ID = data.key;
@@ -70,6 +71,7 @@ export class HomePage {
   	console.log("called");	
   	//Get the list of event ID's
   	this.eventRef.on('value', (events) => {
+  		this.registeredClasses = [];
   		if(events.val() != null){
   			//Iterate over event ID's
   		events.forEach((event) => {
@@ -79,7 +81,7 @@ export class HomePage {
   				var tempRef = firebase.database().ref('Events/' + eventIDref);
   				//Event data can be accessed here on out
   				//Grab each value (we are looking for the divisions/schools)
-  				tempRef.on('value', (eventData) => {
+  				tempRef.once('value', (eventData) => {
   					if(eventData.val() != null){
   						//Iterate over the values in the event
   						eventData.forEach((school) => {
@@ -90,7 +92,7 @@ export class HomePage {
   									//Grab snapshot of the school/division
   									var schoolRef = firebase.database().ref('Events/' + eventIDref + '/' + schoolIDref);
   									//We can now access division name/ring/startdate/starttime
-  									schoolRef.on('value', (schoolData) => {
+  									schoolRef.once('value', (schoolData) => {
   										if(schoolData != null){
   											//Iterate over each class
   											schoolData.forEach((clazz) => {
@@ -100,13 +102,15 @@ export class HomePage {
   														var clazzIDref = clazz.key;
   														var clazzRef = firebase.database().ref('Events/' + eventIDref + '/' + schoolIDref + '/' + clazzIDref);
   														//We can now access class Description/delay/name/idref
-  														clazzRef.on('value', (clazzData) => {
+  														clazzRef.once('value', (clazzData) => {
   															if(clazzData != null){
   																var clazzRiders = firebase.database().ref('Events/' + eventIDref + '/' + schoolIDref + '/' + clazzIDref + '/riders');
-  																clazzRiders.on('value', (riders) => {
+  																clazzRiders.once('value', (riders) => {
   																	if(riders != null){
   																		riders.forEach((rider) => {
-  																			if(rider.val().id === this.currentRider.ID){
+  																			if(rider.val().id == this.currentRider.ID){
+  																			
+
   																				var clazz = new Clazz();
   																				//Store Event Data in clazz
   																				clazz.EventDate = eventData.val().date;
