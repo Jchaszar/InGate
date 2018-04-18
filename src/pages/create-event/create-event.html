@@ -1,38 +1,54 @@
 <ion-header>
-
+<style>
+.Background{
+	background-color:black;
+}
+.Button1{
+	margin-top:30px;
+	background-color:#3DAAE0;
+}
+.Input{
+	margin-top:15px;
+	background-color:black;
+	padding-left:3px;
+}
+.text{
+	color:white;
+}
+</style>
   <ion-navbar color="primary">
   	<button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" style="color:#253E93"></ion-icon>
     </button>
-    <ion-title>CreateEvent</ion-title>
+    <ion-title>Create Event</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="Background">
 	<ion-list>
 		<form [formGroup] ="CreateEventForm"
 	 (submit)="createEvent()" novalidate>
-		<ion-item>
-			<ion-label stacked>Event Name</ion-label>
-			<ion-input formControlName = "eventName" type="text" placeholder ="Enter Event Name"  
+		<ion-item class="Input">
+			<ion-label class="text" stacked>Event Name</ion-label>
+			<ion-input class="text" formControlName = "eventName" type="text" placeholder ="Enter Event Name"  
 			[class.invalid]="!CreateEventForm.controls.eventName.valid && blur">
 			</ion-input>
 		</ion-item>
-		<ion-item>
-			<ion-label stacked>Event Location</ion-label>
-			<ion-input formControlName = "eventLocation" type="text" placeholder ="Enter Event Location"  
+		<ion-item class="Input">
+			<ion-label class="text"  stacked>Event Location</ion-label>
+			<ion-input class="text" formControlName = "eventLocation" type="text" placeholder ="Enter Event Location"  
 			[class.invalid]="!CreateEventForm.controls.eventLocation.valid && blur">
 			</ion-input>
 		</ion-item>
-		<ion-item>
-			<ion-label stacked>Event Date</ion-label>
-			<ion-input formControlName = "eventDate" type="date" placeholder ="Enter Event Date"  
+		<ion-item class="Input">
+			<ion-label class="text" stacked>Event Date</ion-label>
+			<ion-input class="text" formControlName = "eventDate" type="date" placeholder ="Enter Event Date"  
 			[class.invalid]="!CreateEventForm.controls.eventDate.valid && blur">
 			</ion-input>
 		</ion-item>
-		<button ion-button block type="submit" color="default" [disabled]="!CreateEventForm.valid">
+		<button class="Button1" ion-button block type="submit" color="default" [disabled]="!CreateEventForm.valid">
 		Create Event
 		</button>
 	</form>

@@ -9,7 +9,7 @@
   <ion-navbar color="primary">
   	<ion-buttons start>
   		<button ion-button icon-only (click) = "cancel()">
-  		<ion-icon name="close"></ion-icon>
+  		<ion-icon style="padding-left:5px; color:#253E93" name="close"></ion-icon>
   	</button>
   </ion-buttons>
     <ion-title>New Class</ion-title>
@@ -18,29 +18,29 @@
 </ion-header>
 
 
-<ion-content padding>
-	<ion-list>
-		<ion-item>
-			<ion-label floating>Enter a Class Title</ion-label>
-			<ion-input type="text" [(ngModel)]="class.Name">
+<ion-content padding style="background-color:black;">
+	<ion-list style="background-color:black;">
+		<ion-item style="background-color:black;" >
+			<ion-label style="color:white;" floating>Enter a Class Title</ion-label>
+			<ion-input style="color:white;" type="text" [(ngModel)]="class.Name">
 			</ion-input>
 		</ion-item>
 		<br/>
-		<ion-item>
-			<ion-label floating>Enter a Reference ID</ion-label>
-			<ion-input type="number" [(ngModel)]="class.RefID" >
+		<ion-item style="background-color:black;">
+			<ion-label  style="color:white;" floating>Enter a Reference ID</ion-label>
+			<ion-input style="color:white;" type="number" [(ngModel)]="class.RefID" >
 			</ion-input>
 		</ion-item>
 		<br/>
-		<ion-item>
-			<ion-label floating>Enter a StartTime</ion-label>
-			<ion-datetime displayFormat="h:mm A" pickerFormat="h:mm A" [(ngModel)]="class.StartTime">
+		<ion-item style="background-color:black;">
+			<ion-label style="color:white;" floating>Enter a Start Time</ion-label>
+			<ion-datetime style="color:white;" displayFormat="h:mm A" pickerFormat="h:mm A" [(ngModel)]="class.StartTime">
 			</ion-datetime>
 		</ion-item>
 		<br/>
-		<ion-item>
-			<ion-label floating>Enter a Class Description</ion-label>
-			<ion-textarea type="text" [(ngModel)]="class.Description">
+		<ion-item style="background-color:black;">
+			<ion-label style="color:white;" floating>Enter a Class Description</ion-label>
+			<ion-textarea style="color:white;" type="text" [(ngModel)]="class.Description">
 			</ion-textarea>
 		</ion-item>
 		<br/>

@@ -3,7 +3,7 @@
   <ion-navbar color="primary">
   	<ion-buttons start>
   		<button ion-button icon-only (click) = "cancel()">
-  		<ion-icon name="close"></ion-icon>
+  		<ion-icon name="close" style="color:#253E93;"></ion-icon>
   	</button>
   </ion-buttons>
 
@@ -14,26 +14,27 @@
 
 
 
-<ion-content padding>
-	<ion-list>
-		<ion-item>
-			<ion-label floating>Class Group Name:</ion-label>
-			<ion-input type="text" [(ngModel)]="division.Name">
+<ion-content padding style="background-color:black;">
+	<ion-list style="background-color:black; border: none;
+    box-shadow: none;">
+		<ion-item style="background-color:black;">
+			<ion-label style="color:white; background-color:black;" floating>Class Group Name:</ion-label>
+			<ion-input style="color:white;" type="text" [(ngModel)]="division.Name">
 			</ion-input>
 		</ion-item>
-		<ion-item >
-			<ion-label floating>Start Date</ion-label>
-			<ion-datetime displayFormat="MMMM DD, YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="division.StartDate">
+		<ion-item style="background-color:black;">
+			<ion-label style="color:white;" floating>Start Date</ion-label>
+			<ion-datetime style="color:white;" displayFormat="MMMM DD, YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="division.StartDate">
 			</ion-datetime>
 		</ion-item>
-		<ion-item>
-			<ion-label floating>Start Time</ion-label>
-			<ion-datetime displayFormat="h:mm A" pickerFormat="h:mm A" [(ngModel)]="division.StartTime">
+		<ion-item style="background-color:black;">
+			<ion-label style="color:white;" floating>Start Time</ion-label>
+			<ion-datetime style="color:white;"  displayFormat="h:mm A" pickerFormat="h:mm A" [(ngModel)]="division.StartTime">
 			</ion-datetime>
 		</ion-item>
-		<ion-item>
-			<ion-label floating>Location</ion-label>
-			<ion-input type="text" [(ngModel)]=division.Ring>
+		<ion-item style="background-color:black;">
+			<ion-label style="color:white;" floating>Location</ion-label>
+			<ion-input style="color:white;"  type="text" [(ngModel)]=division.Ring>
 			</ion-input>
 		</ion-item>
 	</ion-list>

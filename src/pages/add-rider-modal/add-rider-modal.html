@@ -1,26 +1,26 @@
 
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar style="background-color:#3DAAE0;">
   	<ion-buttons start>
   		<button ion-button icon-only (click) = "cancel()">
-  		<ion-icon name="close"></ion-icon>
+  		<ion-icon style="color:#253E93;" name="close"></ion-icon>
   	</button>
   </ion-buttons>
-    <ion-title>Add Riders</ion-title>
+    <ion-title style="color:white;">Add Riders</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-	<ion-searchbar placeholder="Search Riders" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
+<ion-content padding style="background-color:black;">
+	<ion-searchbar style="background-color:black;" placeholder="Search Riders" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
 	<ion-list>
-			<ion-item *ngFor="let rider of availableRiders">
+			<ion-item style="background-color:black;" *ngFor="let rider of availableRiders">
 				<ion-label>
-					<h2>{{rider.fullName}}</h2>
+					<h2 style="color:white;">{{rider.fullName}}</h2>
 				</ion-label>
-				<ion-checkbox checked="false" [(ngModel)]="rider.selected"></ion-checkbox>
+				<ion-checkbox style="color:#3DAAE0;" checked="false" [(ngModel)]="rider.selected"></ion-checkbox>
 			</ion-item>
 	</ion-list>
 	<button ion-button full icon-left (click)="save()">
