@@ -16,6 +16,7 @@ import { AddRiderModalPage } from '../pages/add-rider-modal/add-rider-modal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Facebook } from '@ionic-native/facebook';
 import { AuthProvider } from '../providers/auth/auth';
 
 //page modules
@@ -65,6 +66,7 @@ import { ClassModalPageModule } from '../pages/class-modal/class-modal.module';
     ListPage,
   ],
   providers: [
+    Facebook,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

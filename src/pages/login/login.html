@@ -22,7 +22,7 @@
 
 
 <ion-content class="Background" padding>
-	<img src="../../assets/imgs/InGateB.png" style="margin-left: auto;margin-right: auto; display: block;">
+	<img src="assets/imgs/InGateB.png" style="margin-left: auto;margin-right: auto; display: block;">
 	<form [formGroup] ="loginForm"
 	 (submit)="loginUser()" novalidate>
 	 <ion-item class="Input">
@@ -47,6 +47,9 @@
 <button style="color:#3DAAE0" ion-button block clear (click)="goToResetPassword()">
 	Forgot your password?
 </button>
+<button ion-button icon-only (click) = "facebookLogin()">
+  		<ion-icon name="logo-facebook"></ion-icon>
+  	</button>
 </ion-content>
 
 <ion-footer style="background-color:black;">

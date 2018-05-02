@@ -13,6 +13,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 import { OrganizerhomePage } from '../organizerhome/organizerhome';
 import firebase from 'firebase';
+import { Facebook } from '@ionic-native/facebook';
 
 
 @IonicPage()
@@ -30,6 +31,7 @@ export class LoginPage {
   public authProvider: AuthProvider, 
   public formBuilder: FormBuilder,
   private menuCtrl: MenuController,
+  public facebook: Facebook,
   public events: Events) {
   	this.loginForm = formBuilder.group({
   		email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -100,6 +102,21 @@ export class LoginPage {
   //method to navigate to reset password page
   goToResetPassword(): void{
   	this.navCtrl.push('ResetPasswordPage');
+  }
+
+  facebookLogin(): Promise<any> {
+  return this.facebook.login(['email'])
+    .then( response => {
+      const facebookCredential = firebase.auth.FacebookAuthProvider
+        .credential(response.authResponse.accessToken);
+
+      firebase.auth().signInWithCredential(facebookCredential)
+        .then( success => { 
+          console.log("Firebase success: " + JSON.stringify(success)); 
+        });
+
+    }).catch((error) => { console.log(error) });
+   
   }
 
 }
